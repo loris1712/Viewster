@@ -1,0 +1,131 @@
+.footer-container{
+    background: #222222;
+}
+
+.footer-container .row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.footer-container .container{
+    padding: 0;
+    margin: 0;
+}
+
+.footer-brand{
+    font-size: 24px !important;
+    font-weight: 700;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.nav-item .nav-link{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.btn-login{
+    margin-right: 1rem;
+}
+
+.footer-category-title{
+    font-weight: 700;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.footer-link-div{
+    margin-bottom: 0.5rem;
+}
+
+.footer-link{
+    color: #fff !important;
+    text-decoration: none !important;
+    font-size: 16px !important;
+    font-weight: 300 !important;
+}
+
+.footer-copyright{
+    display: flex;
+    align-items: center;
+}
+
+.footer-copyright p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0 !important;
+    margin-right: 1.5rem;
+}
+
+.footer-copyright a{
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0 !important;
+    text-decoration: none !important;
+    margin-right: 1rem;
+}
+
+.footer-social .icon a svg{
+    fill: #fff;
+    font-size: 26px;
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+    .footer-first-section{
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .footer-second-section{
+        background: #2D2C2C;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .footer-infos{
+        display: flex;
+    }
+
+    
+    .footer-social{
+        display: flex;
+        margin-left: auto;
+    }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+    .footer-first-section {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        display: inherit !important;
+    }
+
+    .footer-second-section{
+        background: #2D2C2C;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .footer-infos{
+        flex-direction: column-reverse;
+        display: flex;
+    }
+
+    .footer-social{
+        display: flex;
+    }
+}

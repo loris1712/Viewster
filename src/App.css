@@ -7,6 +7,21 @@
   pointer-events: none;
 }
 
+.app-container{
+  background: #1B1B1B;
+}
+
+.transition {
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.transition.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -34,5 +49,69 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* BUTTONS */
+.btn{
+  border-radius: 100px !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary{
+  background: #00C2EC !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+.btn-secondary{
+  background: transparent !important;
+  border: 1px solid #fff !important;
+}
+
+.icon svg{
+  font-size: 35px;
+}
+
+.display-flex2{
+  display: flex;
+}
+
+.btn-service{
+  font-weight: 600;
+  color: #fff !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+  .mobile{
+      display: none !important;
+  }
+
+  .display-flex{
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+  }
+
+  .w--30{
+    width: 30% !important;
+  }
+
+  .w--60{
+    width: 60% !important;
+  }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+  .desktop{
+    display: none;
   }
 }
