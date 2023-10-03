@@ -18,13 +18,16 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#">Services</a>
+                    <a className="nav-link" aria-current="page" href="#services">Services</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Pricing</a>
+                    <a className="nav-link" href="#steps">How it works</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Company</a>
+                    <a className="nav-link" href="#pricing">Pricing</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="#testimonials">Testimonials</a>
                 </li>
             </ul>
             <button className="btn btn-secondary btn-login" type="submit">Login</button>
@@ -47,13 +50,16 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <a className="nav-link nav-link2 active" aria-current="page" href="#">Services <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2 active" aria-current="page" href="#services">Services <p className="nav-link-span">&lt;</p></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link nav-link2" href="#">Pricing <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2" href="#steps">How it works <p className="nav-link-span">&lt;</p></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link nav-link2" href="#">Company <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2" href="#pricing">Pricing <p className="nav-link-span">&lt;</p></a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link nav-link2" href="#testimonials">Testimonials <p className="nav-link-span">&lt;</p></a>
                 </li>
             </ul>
             <button className="btn btn-primary btn-create" type="submit">Create an account</button>

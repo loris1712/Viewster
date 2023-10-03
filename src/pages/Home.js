@@ -51,7 +51,7 @@ function Home() {
                 <img src="../../increaseimage.png" class="img-fluid" alt="..." />
               </div>
           </div>
-          <div className="row align-items-start home-section">
+          <div className="row align-items-start home-section" id="services">
               <div className="col">
                 <div className='title'>
                   <h3>Our <span>Services</span></h3>
@@ -97,7 +97,7 @@ function Home() {
                 </div>
               </div>
           </div>
-          <div className="row align-items-start home-section build-your-campaing">
+          <div className="row align-items-start home-section build-your-campaing" id="steps">
               <div className="col">
                 <div className='title'>
                   <h3>Build your <span>Campaign</span></h3>
@@ -157,7 +157,7 @@ function Home() {
                 </div>
               </div>
           </div>
-          <div className="row align-items-start home-section">
+          <div className="row align-items-start home-section" id="pricing">
               <div className="col">
                 <div className='title'>
                   <h3>Our Pricing</h3>
@@ -268,7 +268,7 @@ function Home() {
                 </div>
               </div>
           </div>
-          <div className="row align-items-start home-section">
+          <div className="row align-items-start home-section" id="testimonials">
               <div className="col">
                 <div className='title'>
                   <h3>Testimonials</h3>
