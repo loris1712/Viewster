@@ -1,0 +1,156 @@
+.form-component button{
+    margin-bottom: 0.5rem;
+}
+
+.form-component .title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.custom-dropdown option{
+    color: #000;
+  }
+
+.form-component-social-button{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-component-social-button button{
+    min-width: 100%;
+}
+
+.form-component-social-button .btn-facebook{
+    background-color: #1877F2 !important;
+    color: #fff !important;
+}
+
+.form-component-social-button .btn-apple{
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.form-component-social-button .btn-google{
+    background-color: transparent !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+}
+
+.form-component .text {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.form-component .form-control{
+    margin-bottom: 0.5rem;
+    border: 1px solid #ffffff8a;
+    background: transparent;
+    border-radius: 8px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-size: 14px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+
+.form-component .form-control:focus{
+    background-color: transparent;
+    box-shadow: none !important;
+    color: white;
+}
+
+input::placeholder{
+    color: #AFAFAF !important;
+}
+
+.form-check{
+    padding-left: 0 !important;
+    display: flex !important;
+}
+
+.form-check-input{
+        margin-bottom: none !important;
+        border: 1px solid #fff !important;
+        background: transparent;
+        width: auto !important;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        color: white;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.6rem !important;
+        padding-right: 0.6rem !important;
+        cursor: pointer;
+}
+
+.form-check-label{
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.form-check-label span{
+    text-decoration: underline;
+}
+
+.forget_login_container{
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 1.5rem !important;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #ffffff24;
+}
+
+.forget_login_container_bottom{
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.forget_login_container .forget_password{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.forget_login_container .login_button{
+    margin-left: auto !important;
+    width: fit-content;
+}
+
+.forget_login_container .col_login_button{
+    width: fit-content;
+}
+
+.login_button button{
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+    .form-component{
+        width: 40% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+    .form-component{
+        width: 100% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

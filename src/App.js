@@ -1,11 +1,15 @@
 import AppRouter from './AppRouter';
 import React from 'react';
 import './App.css';
+import { SessionProvider } from './sessionContext';
 
 function App() {
   return (
     <div className='app-container'>
-      <AppRouter />
+      <SessionProvider>
+        <AppRouter />
+      </SessionProvider>
+      
     </div>
   );
 }

@@ -14,18 +14,18 @@ function Footer() {
               Product
             </div>
             <div className='footer-link-div'>
-              <a href="#" className='footer-link'>
-                Page Name
+              <a href="/#services" className='footer-link'>
+                Services
               </a>
             </div>
             <div className='footer-link-div'>
-              <a href="#" className='footer-link'>
-                Page Name
+              <a href="/#steps" className='footer-link'>
+                How it works
               </a>
             </div>
             <div className='footer-link-div'>
-              <a href="#" className='footer-link'>
-                Page Name
+              <a href="/#pricing" className='footer-link'>
+                Pricing
               </a>
             </div>
           </div>

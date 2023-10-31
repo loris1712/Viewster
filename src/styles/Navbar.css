@@ -1,0 +1,52 @@
+.navbar2 {
+    width: 84vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  .navbar2 .navbar{
+    margin: 0 !important;
+    background-color: #222222 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.197) !important;
+    padding: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .page-title{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .flex-right-component{
+    margin-left: auto;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-icon{
+    padding-right: 1rem;
+    display: flex;
+  }
+
+  .user-info{
+    padding-left: 1rem;
+    display: flex;
+    align-items: center; 
+    border-left: 1px solid rgba(255, 255, 255, 0.197) !important;
+  }
+
+  .user-nickname{
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+    padding-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .user-image{
+    display: flex;
+  }

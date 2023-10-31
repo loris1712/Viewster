@@ -48,7 +48,7 @@ function Home() {
                 </div>
               </div>
               <div className="col">
-                <img src="../../increaseimage.png" class="img-fluid" alt="..." />
+                <img src="../../increaseimage.png" className="img-fluid" alt="..." />
               </div>
           </div>
           <div className="row align-items-start home-section" id="services">

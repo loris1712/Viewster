@@ -7,7 +7,7 @@ function Header() {
     <div className='header'>
       <nav className="navbar navbar-expand-lg fixed-top desktop">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">Viewster</a>
+            <a className="navbar-brand" href="/">Viewster</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="svg-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-menu-app" viewBox="0 0 16 16">
@@ -18,28 +18,34 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <a className="nav-link" aria-current="page" href="#services">Services</a>
+                    <a className="nav-link" aria-current="page" href="/#services">Services</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#steps">How it works</a>
+                    <a className="nav-link" href="/#steps">How it works</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#pricing">Pricing</a>
+                    <a className="nav-link" href="/#pricing">Pricing</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#testimonials">Testimonials</a>
+                    <a className="nav-link" href="/#testimonials">Testimonials</a>
                 </li>
             </ul>
-            <button className="btn btn-secondary btn-login" type="submit">Login</button>
-            <button className="btn btn-primary" type="submit">Start a Campaign</button>
+            <a href="/login">
+              <button className="btn btn-secondary btn-login" type="submit">Login</button>
+            </a>
+            
+            <a href="/signup">
+              <button className="btn btn-primary" type="submit">Start a Campaign</button>
+            </a>
             </div>
+            
         </div>
       </nav>
 
       <nav className="navbar navbar-expand-lg fixed-top mobile">
         <div className="container-fluid">
-            <a className="navbar-brand navbar-button" href="#">Login</a>
-            <a className="navbar-brand" href="#">Viewster</a>
+            <a className="navbar-brand navbar-button" href="/login">Login</a>
+            <a className="navbar-brand" href="/">Viewster</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="svg-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-menu-app" viewBox="0 0 16 16">
@@ -50,20 +56,23 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <a className="nav-link nav-link2 active" aria-current="page" href="#services">Services <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2 active" aria-current="page" href="/#services">Services <p className="nav-link-span">&lt;</p></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link nav-link2" href="#steps">How it works <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2" href="/#steps">How it works <p className="nav-link-span">&lt;</p></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link nav-link2" href="#pricing">Pricing <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2" href="/#pricing">Pricing <p className="nav-link-span">&lt;</p></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link nav-link2" href="#testimonials">Testimonials <p className="nav-link-span">&lt;</p></a>
+                    <a className="nav-link nav-link2" href="/#testimonials">Testimonials <p className="nav-link-span">&lt;</p></a>
                 </li>
             </ul>
-            <button className="btn btn-primary btn-create" type="submit">Create an account</button>
+            <a href="/signup">
+              <button className="btn btn-primary btn-create" type="submit">Create an account</button>
+            </a>
             </div>
+            
         </div>
       </nav>
     </div>

@@ -1,0 +1,70 @@
+.searchbar{
+    margin-bottom: 0.5rem !important;
+    border: 1px solid #ffffff8a !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+    width: 40% !important;
+    color: white !important;
+    font-size: 12px !important;
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+}
+
+.searchbar:focus{
+    background-color: transparent;
+    box-shadow: none !important;
+    color: white;
+}
+
+input::placeholder{
+    color: #AFAFAF !important;
+}
+
+.table>:not(caption)>*>* {
+    background-color: transparent !important;
+    border-bottom-width: none !important;
+    box-shadow: none !important;
+}
+
+tbody tr {
+border-color: transparent !important; 
+    border-style: none !important; 
+    border-width: 0 !important;
+}
+
+.row-actions{
+    display: flex;
+    align-items: center;
+    padding-top: 0.8rem !important;
+}
+
+.row-last{
+    padding-top: 0.8rem !important;
+}
+
+.button-status-complete{
+    background-color: #04ec0034  !important;
+    color: #24FF00 !important;
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+    .dashboard-component{
+        width: 84vw;
+        margin-left: auto;
+        background: #222222;
+        padding-top: 5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+    .dashboard-component{
+        background: #222222;
+    }
+}

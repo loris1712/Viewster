@@ -1,0 +1,100 @@
+.sidebar {
+    height: 100vh;
+    width: 16vw; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #131313;
+    padding-top: 1rem; 
+    border-right: 1px solid rgba(255, 255, 255, 0.197);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: #333; 
+  }
+  
+  .sidebar a:hover {
+    color: #007bff;
+  }  
+
+  .button-start-campaign{
+    margin-top: 1rem;
+  }
+
+  .sidebar-list{
+    margin-top: 1.5rem;
+    height: calc(100% - 175px); /* 60px è l'altezza del navbar e altri elementi nella sidebar */
+    overflow-y: auto;
+  }
+
+  .title-list{
+    color: #7D8590;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 2.8px;
+  }
+
+  .pages-list{
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+  }
+
+  .page-list{
+    margin-bottom: 0.5rem;
+  }
+
+  .page-list a{
+    color: #ffffffc7 !important;
+    font-weight: 400;
+    font-size: 16px;
+    transition: 1s all ease;
+  }
+  
+  .page-list a:hover{
+    color: #fff !important;
+  }
+
+  .page-list .active{
+    color: #fff !important;
+    font-weight: 700;
+  }
+
+  .page-list-logout{
+    margin-top: auto;
+    color: #ffffffc7;
+    font-size: 16px;
+    transition: 1s all ease;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  .page-list-logout:hover{
+    color: #fff !important;
+  }
+
+  /*Desktop*/
+@media (min-width: 1025px) {
+  .navbar-brand{
+    font-size: 30px !important;
+  }
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+
+}
