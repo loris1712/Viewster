@@ -20,7 +20,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <a className="navbar-brand" href="/">Viewster</a>
       <div>
-        <button className="btn btn-primary button-start-campaign" type="submit">Start a Campaign</button>
+        <button className="btn btn-primary button-start-campaign" type="submit">Build a Campaign</button>
       </div>
 
       <div className='sidebar-list'>

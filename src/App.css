@@ -120,6 +120,6 @@ button:hover {
 /*Mobile*/
 @media (max-width: 767px) {
   .desktop{
-    display: none;
+    display: none !important;
   }
 }

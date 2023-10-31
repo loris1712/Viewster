@@ -1,17 +1,3 @@
-.searchbar{
-    margin-bottom: 0.5rem !important;
-    border: 1px solid #ffffff8a !important;
-    background: transparent !important;
-    border-radius: 8px !important;
-    width: 40% !important;
-    color: white !important;
-    font-size: 12px !important;
-    padding-top: 0.6rem !important;
-    padding-bottom: 0.6rem !important;
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
-}
-
 .searchbar:focus{
     background-color: transparent;
     box-shadow: none !important;
@@ -34,6 +20,10 @@ border-color: transparent !important;
     border-width: 0 !important;
 }
 
+tbody tr:hover{
+    background: #312f2f6c;
+}
+
 .row-actions{
     display: flex;
     align-items: center;
@@ -42,11 +32,6 @@ border-color: transparent !important;
 
 .row-last{
     padding-top: 0.8rem !important;
-}
-
-.button-status-complete{
-    background-color: #04ec0034  !important;
-    color: #24FF00 !important;
 }
 
 /*Desktop*/
@@ -60,11 +45,66 @@ border-color: transparent !important;
         padding-right: 1rem;
         padding-bottom: 1rem;
     }
+
+    .searchbar{
+        margin-bottom: 2rem !important;
+        border: 1px solid #ffffff8a !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        width: 40% !important;
+        color: white !important;
+        font-size: 12px !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    .button-status-complete{
+        background-color: #04ec0034  !important;
+        color: #24FF00 !important;
+    }
 }
 
 /*Mobile*/
 @media (max-width: 767px) {
     .dashboard-component{
+        width: 100vw;
+        margin-left: auto;
         background: #222222;
+        padding-top: 5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
     }
+
+    .searchbar{
+        margin-bottom: 2rem !important;
+        border: 1px solid #ffffff8a !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        width: 100% !important;
+        color: white !important;
+        font-size: 12px !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    .table>:not(caption)>*>* {
+        font-size: 12px;
+    }
+
+    .button-status-complete{
+        color: #24FF00 !important;
+        font-size: 10px !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 0.3rem !important;
+        padding-bottom: 0.3rem !important;
+        line-height: 0px;
+        background-color: #04ec0034  !important;
+    }
+
 }
