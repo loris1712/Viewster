@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import '../styles/Login.css';
 import { useHistory } from "react-router-dom";
 import { useSession } from '../sessionContext';
-import FacebookLogin from 'react-facebook-login';
+//import FacebookLogin from 'react-facebook-login';
 import AppleLogin from 'react-apple-login'
 
 function Login() {
@@ -124,19 +124,19 @@ function Login() {
                 <div className='title'>
                     To continue, sign in to Viewster.
                 </div>
-                {/*<div className='form-component-social-button'>
+                <div className='form-component-social-button'>
                   <a href="http://localhost:3001/users/auth/facebook">
                     <button className="btn btn-primary btn-facebook" type="submit">Continue with Facebook</button>
                   </a>
-                </div>*/}
-                <FacebookLogin
+                </div>
+                {/*<FacebookLogin
                   appId="2269693443362408"
                   autoLoad={false}
                   fields="name,email,picture"
                   textButton="Continue with Facebook"
                   callback={responseFacebook}
                   cssClass="form-component-social-button custom-facebook-button"
-                />
+                />*/}
                 <AppleLogin 
                 clientId="com.react.apple.login" 
                 redirectURI="http://localhost:3001/users/auth/apple/callback" 
