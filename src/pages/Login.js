@@ -5,6 +5,8 @@ import Footer from '../components/Footer';
 import '../styles/Login.css';
 import { useHistory } from "react-router-dom";
 import { useSession } from '../sessionContext';
+import FacebookLogin from 'react-facebook-login';
+import AppleLogin from 'react-apple-login'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -62,6 +64,57 @@ function Login() {
     }
   };
 
+  const handleAppleSignIn = (data) => {
+    
+    console.log(data);
+  };
+
+  const responseFacebook = (response) => {
+    if (response.accessToken) {
+      
+      const accessToken = response.accessToken;
+      fetch('http://localhost:3001/auth/facebook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ accessToken: accessToken }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          //onLoginSuccess(data);
+        })
+        .catch((error) => {
+          //onLoginFailure(error);
+        });
+    } else {
+      //onLoginFailure(response);
+    }
+  };
+  const [message, setMessage] = useState('');
+
+  const handleResetPassword = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/users/request-reset-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email} ),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        setMessage(data.message);
+      } else {
+        setMessage(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -71,30 +124,50 @@ function Login() {
                 <div className='title'>
                     To continue, sign in to Viewster.
                 </div>
-                <div className='form-component-social-button'>
-                    <button className="btn btn-primary btn-facebook" type="submit">Continue with facebook.</button>
+                {/*<div className='form-component-social-button'>
+                  <a href="http://localhost:3001/users/auth/facebook">
+                    <button className="btn btn-primary btn-facebook" type="submit">Continue with Facebook</button>
+                  </a>
+                </div>*/}
+                <FacebookLogin
+                  appId="2269693443362408"
+                  autoLoad={false}
+                  fields="name,email,picture"
+                  textButton="Continue with Facebook"
+                  callback={responseFacebook}
+                  cssClass="form-component-social-button custom-facebook-button"
+                />
+                <AppleLogin 
+                clientId="com.react.apple.login" 
+                redirectURI="http://localhost:3001/users/auth/apple/callback" 
+                callback={handleAppleSignIn} 
+                /*onSuccess={onSuccess}
+                onFailure={onFailure}*/
+                render={({ onClick }) => (
+                  <div className='form-component-social-button'>
+                  <button className="btn btn-primary btn-apple" type="submit" onClick={onClick}>Continue with Apple</button>
                 </div>
+                )}/>
 
                 <div className='form-component-social-button'>
-                    <button className="btn btn-primary btn-apple" type="submit">Continue with Apple.</button>
-                </div>
-
-                <div className='form-component-social-button'>
-                    <button className="btn btn-primary btn-google" type="submit">Continue with Google.</button>
+                  <a href="http://localhost:3001/users/auth/google">
+                    <button className="btn btn-primary btn-google" type="submit">Continue with Google</button>
+                  </a>
                 </div>
                 <div className='text'>or</div>
                 <input type="email" className="form-control" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <div className='row forget_login_container'>
-                    <div className='col'>
-                        <p className='forget_password'>Did you forget your password?</p>
-                    </div>
+                    {/*<div className='col'>
+                        <p className='forget_password' onClick={handleResetPassword}>Did you forget your password?</p>
+                    </div>*/}
                     <div className='col col_login_button'>
                         <div className='login_button'>
                             <button className="btn btn-primary" type="submit" onClick={handleSignIn}>Login</button>
                         </div>
                     </div>
                 </div>
+                {message && <p>{message}</p>}
                 <div className='row forget_login_container_bottom'>
                   <div className='col'>
                     <div className='text'>Do not have an account?</div>

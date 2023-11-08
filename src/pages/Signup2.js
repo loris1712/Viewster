@@ -343,15 +343,17 @@ function Signup2() {
                   Sign up for free to launch your music.
                 </div>
                 <div className='form-component-social-button'>
-                  <button className="btn btn-primary btn-facebook" type="submit">Sign up with Facebook.</button>
+                  <button className="btn btn-primary btn-facebook" type="submit">Sign up with Facebook</button>
                 </div>
 
                 <div className='form-component-social-button'>
-                  <button className="btn btn-primary btn-apple" type="submit">Sign up with Apple.</button>
+                  <button className="btn btn-primary btn-apple" type="submit">Sign up with Apple</button>
                 </div>
 
                 <div className='form-component-social-button'>
-                  <button className="btn btn-primary btn-google" type="submit">Sign up with Google.</button>
+                  <a href="http://localhost:3001/users/auth/google">
+                    <button className="btn btn-primary btn-google" type="submit">Sign up with Google</button>
+                  </a>
                 </div>
                 <div className='text'>or</div>
                 <div className='row'>

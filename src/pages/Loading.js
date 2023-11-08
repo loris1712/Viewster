@@ -1,0 +1,75 @@
+// pages/Dashboard.js
+import React, { useEffect, useState }  from 'react'
+import Sidebar from '../components/sidebar';
+import Navbar from '../components/navbar';
+import Footer from '../components/Footer';
+import '../styles/Dashboard.css';
+import { useSession } from '../sessionContext';
+import { useLocation } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+
+function Dashboard2() {
+  const location = useLocation();
+  const [userData, setUserData] = useState(null);
+  const history = useHistory();
+  const { login } = useSession();
+
+  useEffect(() => {
+    const email = new URLSearchParams(location.search).get('info');
+
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/users/userEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+        const data = await response.json();
+        if (data) {
+          login(data[0].email); 
+          history.push('/dashboard');
+          window.location.reload();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (email) {
+      fetchUserData();
+    }
+  }, [location.search]); 
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/users/getUserData", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        if (data) {
+          console.log(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserData();
+  }, []); 
+
+  return (
+    <div>
+      <div className='loading-component'>
+        
+      </div>
+    </div>
+  );
+}
+
+export default Dashboard2;

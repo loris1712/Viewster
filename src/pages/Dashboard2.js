@@ -5,11 +5,10 @@ import Navbar from '../components/navbar';
 import Footer from '../components/Footer';
 import '../styles/Dashboard.css';
 import { useSession } from '../sessionContext';
+import { useLocation } from 'react-router-dom';
 
 function Dashboard2() {
   const [email, setEmail] = useState("");
-
-  
   const { session } = useSession();
   const email2 = session ? session.email : null;
 
@@ -33,6 +32,7 @@ function Dashboard2() {
     window.addEventListener("scroll", reveal);
     
   }, []);
+
   return (
     <div>
       <Navbar />
@@ -40,7 +40,7 @@ function Dashboard2() {
         <div className='dashboard-component'>
           <input type="email" className="form-control searchbar" id="email" placeholder="Search a campaign" value={email} onChange={(e) => setEmail(e.target.value)}/>
           <div className='table-campaigns'>
-          <table class="table table-dark">
+          <table className="table table-dark">
             <thead>
               <tr>
                 <th scope="col">Campaign Name</th>
