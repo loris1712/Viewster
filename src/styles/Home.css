@@ -30,6 +30,12 @@
     border-radius: 100px;
 }
 
+.subtitle h5{
+    margin-top: 1rem;
+    color: #fff;
+    font-size: 22px;
+}
+
 .subtitle2 h4{
     padding-top: 0.3rem;
     padding-bottom: 0.5rem;
@@ -363,6 +369,10 @@
     transition: transform 0.3s ease; /* Aggiungi un'animazione di transizione */
     color: #00B2FF;
   }
+
+  .description span{
+    color: #fff;
+}
 
 /*Desktop*/
 @media (min-width: 1025px) {

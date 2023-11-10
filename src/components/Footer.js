@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className='footer-container'>
         <div className="row align-items-start footer-first-section">
-          <div className="col">
+          <div className="col-3">
             <a className="footer-brand" href="#">Viewster</a>
           </div>
           <div className="col">
@@ -29,33 +29,13 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div className="col">
-            <div className='footer-category-title'>
-              Support
-            </div>
-            <div className='footer-link-div'>
-              <a href="#" className='footer-link'>
-                Page Name
-              </a>
-            </div>
-            <div className='footer-link-div'>
-              <a href="#" className='footer-link'>
-                Page Name
-              </a>
-            </div>
-            <div className='footer-link-div'>
-              <a href="#" className='footer-link'>
-                Page Name
-              </a>
-            </div>
-          </div>
         </div>
         <div className="footer-second-section">
           <div className="footer-infos">
             <div className='footer-copyright'>
               <p>© 2023 Viewster, Inc</p>
-              <a href='#' className=''>Terms</a>
-              <a href='#' className=''>Privacy</a>
+              <a href='/terms' className=''>Terms</a>
+              <a href='/privacy' className=''>Privacy</a>
             </div>
 
             <div className='footer-social'>
