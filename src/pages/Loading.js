@@ -19,7 +19,7 @@ function Dashboard2() {
 
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users/userEmail", {
+        const response = await fetch("https://viewster-backend.vercel.app/users/userEmail", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function Dashboard2() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users/getUserData", {
+        const response = await fetch("https://viewster-backend.vercel.app/users/getUserData", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

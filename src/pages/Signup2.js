@@ -70,7 +70,7 @@ function Signup2() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:3001/users/createUser", {
+      const response = await fetch("https://viewster-backend.vercel.app/users/createUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -342,17 +342,10 @@ function Signup2() {
                 <div className='title'>
                   Sign up for free to launch your music.
                 </div>
-                <div className='form-component-social-button'>
-                  <button className="btn btn-primary btn-facebook" type="submit">Sign up with Facebook</button>
-                </div>
 
                 <div className='form-component-social-button'>
-                  <button className="btn btn-primary btn-apple" type="submit">Sign up with Apple</button>
-                </div>
-
-                <div className='form-component-social-button'>
-                  <a href="http://localhost:3001/users/auth/google">
-                    <button className="btn btn-primary btn-google" type="submit">Sign up with Google</button>
+                  <a href="https://viewster-backend.vercel.app/users/auth/google">
+                    <button className="btn btn-primary btn-apple" type="submit">Sign up with Google</button>
                   </a>
                 </div>
                 <div className='text'>or</div>
