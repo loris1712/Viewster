@@ -1,4 +1,4 @@
-.first-section{
+.home-container .first-section{
     padding-bottom: 5rem ;
 }
 
@@ -408,10 +408,10 @@
     }
     
     .title h3{
-        font-size: 34px;
-        font-weight: 700;
+        font-size: 34px !important;
+        font-weight: 700 !important;
         line-height: 90%;
-        color: #fff;
+        color: #fff !important;
     }
 
     .description{
@@ -440,14 +440,23 @@
         background: linear-gradient(to right, #78F3E7, #83C5FE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    .testimonial-card{
-        padding: 1.5rem;
-        border-radius: 20px;
-        border: 1px solid #555555;
-        width: 25%;
-        margin-top: 2rem;
+    .testimonials-section{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch !important;
     }
 
+    .testimonial-card {
+        padding: 1.5rem;
+        overflow-y: hidden;
+        position: relative;
+        border-radius: 20px;
+        border: 1px solid #555555;
+        margin-top: 2rem;
+        flex: 1; /* Regola per tre card per riga, sottrai il gap */
+    }
+    
     .testimonial-card p{
         color: #fff;
         width: 90%;
@@ -550,7 +559,7 @@
         display: flex;
         overflow-x: scroll;
         overflow-y: hidden;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: center;
         position: relative;
     }

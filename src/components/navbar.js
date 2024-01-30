@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useSession } from '../sessionContext';
@@ -20,12 +20,24 @@ const Navbar = () => {
         return 'Messages';
       case '/invoices':
         return 'Invoices';
+      case '/build':
+        return 'Build your campaign';
+      case '/campaignDetails':
+        return 'Campaign Details';
+      case '/confirmedPayment':
+        return 'Confirmed Payment';
+      case '/ticketDetails':
+        return 'Ticket Details';
       default:
         return 'Page Not Found';
     }
   };
 
-  const pageTitle = getPageTitle();
+  let pageTitle = getPageTitle();
+
+  useEffect(() => {
+    pageTitle = getPageTitle();
+  }, []);
 
   return (
     <div className="navbar2">
@@ -90,9 +102,9 @@ const Navbar = () => {
                     </NavLink>
                 </li>
             </ul>
-            <a href="/signup">
+            <NavLink to="/build">
               <button className="btn btn-primary btn-create" type="submit">Build a Campaign</button>
-            </a>
+            </NavLink>
             </div>
         </div>
       </nav>

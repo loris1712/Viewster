@@ -1,5 +1,5 @@
 // pages/Home.js
-import React, { useEffect, useState }  from 'react'
+import React, { useEffect }  from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Home.css';
@@ -195,7 +195,7 @@ function Home() {
                       </div>
                     </div>
                     <div className='pricing-amount'>
-                      $300
+                      $325
                     </div>
                     <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
                   </div>
@@ -228,7 +228,7 @@ function Home() {
                       </div>
                     </div>
                     <div className='pricing-amount'>
-                      $550
+                      $650
                     </div>
                     <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
                   </div>
@@ -278,17 +278,14 @@ function Home() {
                     <div className='icon'>
                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/></svg>
                     </div>
-                    <p>Dolor sit amet, consectetur adipiscing elit. Enim tempus mattis facilisis massa tincidunt tortor gravida. Accumsan hac a non congue maecenas tellus vel odio varius. Sed posuere.</p>
+                    <p>Viewster delivered! We wanted to boost our video and Viewster got us 100,000 views in 48 hours. The traffic shows up as "YouTube Advertising" in our Analytics. I highly recommend them!</p>
                     <div className='author'>
-                      <div className='author-image'>
+                      {/*<div className='author-image'>
                         <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" className="img-thumbnail" alt="..." />
-                      </div>
+  </div>*/}
                       <div className='author-information'>
                         <div className='author-name'>
-                          Jon Asterious
-                        </div>
-                        <div className='author-role'>
-                          COO of Art
+                          Josh
                         </div>
                       </div>
                     </div>
@@ -297,17 +294,11 @@ function Home() {
                     <div className='icon'>
                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/></svg>
                     </div>
-                    <p>Dolor sit amet, consectetur adipiscing elit. Enim tempus mattis facilisis massa tincidunt tortor gravida. Accumsan hac a non congue maecenas tellus vel odio varius. Sed posuere.</p>
+                    <p>Super easy to use, select the video, the number of views you need or your budget and boom! Totally satisfied and will use them for all artists that we manage.</p>
                     <div className='author'>
-                      <div className='author-image'>
-                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" className="img-thumbnail" alt="..." />
-                      </div>
                       <div className='author-information'>
                         <div className='author-name'>
-                          Jon Asterious
-                        </div>
-                        <div className='author-role'>
-                          COO of Art
+                          Ben
                         </div>
                       </div>
                     </div>
@@ -316,17 +307,12 @@ function Home() {
                     <div className='icon'>
                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/></svg>
                     </div>
-                    <p>Dolor sit amet, consectetur adipiscing elit. Enim tempus mattis facilisis massa tincidunt tortor gravida. Accumsan hac a non congue maecenas tellus vel odio varius. Sed posuere.</p>
+                    <p>My video was taken down due to copyright claim in the middle of my campaign. I thought I would lose my money, but Viewster stuck to their word. They only charged me for the 40k impressions that were delivered and refunded the rest of the fee to me. I love this! </p>
                     <div className='author'>
-                      <div className='author-image'>
-                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" className="img-thumbnail" alt="..." />
-                      </div>
+                      
                       <div className='author-information'>
                         <div className='author-name'>
-                          Jon Asterious
-                        </div>
-                        <div className='author-role'>
-                          COO of Art
+                          Jon
                         </div>
                       </div>
                     </div>
@@ -335,17 +321,12 @@ function Home() {
                     <div className='icon'>
                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/></svg>
                     </div>
-                    <p>Dolor sit amet, consectetur adipiscing elit. Enim tempus mattis facilisis massa tincidunt tortor gravida. Accumsan hac a non congue maecenas tellus vel odio varius. Sed posuere.</p>
+                    <p>1 million views in 8 days. Do I need to say more?</p>
                     <div className='author'>
-                      <div className='author-image'>
-                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" className="img-thumbnail" alt="..." />
-                      </div>
+                      
                       <div className='author-information'>
                         <div className='author-name'>
-                          Jon Asterious
-                        </div>
-                        <div className='author-role'>
-                          COO of Art
+                          Jennifer
                         </div>
                       </div>
                     </div>
@@ -369,8 +350,9 @@ function Home() {
                     </h2>
                     <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                       <div className="accordion-body">
-                        Viewster is an artist-first platform that allows you to promote your music and build your community, Viewster is an artist-first platform that allows you to promote your music and build your community, Viewster is an artist-first platform that allows you to promote your music and build your community, Viewster is an artist-first platform that allows you to promote your music and build your community, Viewster is an artist-first platform that allows you to promote your music and build your community, Viewster is an artist-first platform that allows you to promote your music and build your community.                      </div>
+                        Viewster is an artist-first platform that allows you to promote your music, maximize views and build your community. Viewster allows you to easily set up and drive views to your videos on YouTube from real viewers who will choose to engage with it. The traffic is 100% real, there are no bots, the views will count towards your total view count and show up as "YouTube Advertising" in your analytics dashboard and you only pay for the views that we deliver. This is 100% safe and 100% legitimate traffic.
                       </div>
+                    </div>
                   </div>
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingTwo">
@@ -382,7 +364,7 @@ function Home() {
                     </h2>
                     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                       <div className="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        The views are from 100% real users on YouTube who will see your video as an ad. There are no bots, the traffic is 100% real and will show up as "YouTube Advertising" in your analytics dashboard on YouTube. This is 100% safe and 100% legitimate traffic.
                       </div>
                     </div>
                   </div>
@@ -396,21 +378,21 @@ function Home() {
                     </h2>
                     <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                       <div className="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        Viewster will only charge you for the views that we can successfully deliver. If, for any reason, we cannot deliver the views that you have purchased, the amount you paid for the undelivered views will be refunded to you. That is a Delivery Guarantee that no one in the business can offer!
                       </div>
                     </div>
                   </div>
                   <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingThree">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h2 className="accordion-header" id="heading4">
+                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
                         <div className='icon'>
                         </div>
                         What kind of videos can I promote?
                       </button>
                     </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div id="collapse4" className="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
                       <div className="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        You can promote any videos on YouTube as long as they do not violate the YouTube Terms of Service or Community Guidelines. YouTube always has the right to stop advertising on videos that it believes violates its Terms of Service or Community Guidelines including videos that promote Spam, Nudity, Sexual Content, Violence, Guns, Drug Use, Illegal Goods or Misinformation. Please verify that your video adheres to the guidelines set forth on YouTube including on <a href="https://support.google.com/youtube/answer/9288567">YouTube's Community Guidelines</a>
                       </div>
                     </div>
                   </div>

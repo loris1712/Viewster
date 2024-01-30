@@ -1,0 +1,34 @@
+.progress-bar{
+    background-color: #3B3B3B !important;
+    height: 3px;
+    border-radius: 100px;
+}
+
+.button-back-builder{
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: white !important;
+    padding-left: 0.1 !important;
+}
+
+.button-next-builder{
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.builder-controls{
+    width: 100%;
+    display: flex;
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+.button-start-campaign{
+    width: fit-content !important;
+}
+}

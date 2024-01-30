@@ -1,17 +1,14 @@
 // pages/Dashboard.js
-import React, { useEffect, useState }  from 'react'
-import Sidebar from '../components/sidebar';
-import Navbar from '../components/navbar';
-import Footer from '../components/Footer';
+import React, { useEffect }  from 'react'
 import '../styles/Dashboard.css';
 import { useSession } from '../sessionContext';
-import { useLocation } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 function Dashboard2() {
   const location = useLocation();
-  const [userData, setUserData] = useState(null);
-  const history = useHistory();
+  //const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
   const { login } = useSession();
 
   useEffect(() => {
@@ -29,7 +26,7 @@ function Dashboard2() {
         const data = await response.json();
         if (data) {
           login(data[0].email); 
-          history.push('/dashboard');
+          navigate('/dashboard');
           window.location.reload();
         }
       } catch (error) {
@@ -40,7 +37,7 @@ function Dashboard2() {
     if (email) {
       fetchUserData();
     }
-  }, [location.search]); 
+  }, [location.search, navigate]); 
 
   useEffect(() => {
     const fetchUserData = async () => {

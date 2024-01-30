@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Signup.css';
 import { useSession } from '../sessionContext';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Signup2() {
   const [email, setEmail] = useState("");
@@ -15,13 +15,13 @@ function Signup2() {
   const [countryPhone, setCountryPhone] = useState("");
   const [termsChecked, setTermsChecked] = useState(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { login, session } = useSession();
   const emailSession = session ? session.email : null;
 
   useEffect(() => {
     if(emailSession){
-      history.push('/dashboard');
+      navigate('/dashboard');
       window.location.reload();
     }
 
@@ -43,7 +43,7 @@ function Signup2() {
 
     window.addEventListener("scroll", reveal);
     
-  }, [emailSession]);
+  }, [emailSession, navigate]);
 
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -78,12 +78,12 @@ function Signup2() {
         body: JSON.stringify({ email, password, firstname, lastname, phone, countryPhone }),
       });
       
-      const data = await response.json();
+      //const data = await response.json();
 
       if (response.status === 200) {
         const userEmail = email; 
         login(userEmail); 
-        history.push('/dashboard');
+        navigate('/dashboard');
         window.location.reload();
       }
 
@@ -382,12 +382,12 @@ function Signup2() {
                 </div>
                 <div className='row forget_login_container'>
                     <div className='col'>
-                    <div className="form-check">
-                      <input className='form-check-input' type='checkbox' value='' id='flexCheckDefault' checked={termsChecked} onChange={() => setTermsChecked(!termsChecked)} required />
-                      <label className='form-check-label' htmlFor='flexCheckDefault'>
-                        Accetto i <span>termini e le condizioni</span>.
-                      </label>
-                    </div>
+                      <div className="form-check">
+                        <input className='form-check-input' type='checkbox' value='' id='flexCheckDefault' checked={termsChecked} onChange={() => setTermsChecked(!termsChecked)} required />
+                        <label className='form-check-label' htmlFor='flexCheckDefault'>
+                          I accept the <span>terms and conditions</span>.
+                        </label>
+                      </div>
                     </div>
                     <div className='col col_login_button'>
                         <div className='login_button'>

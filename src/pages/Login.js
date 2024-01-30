@@ -3,15 +3,13 @@ import React, { useEffect, useState }  from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Login.css';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { useSession } from '../sessionContext';
-//import FacebookLogin from 'react-facebook-login';
-import AppleLogin from 'react-apple-login'
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
   const { login } = useSession();
 
   const { session } = useSession();
@@ -20,7 +18,7 @@ function Login() {
   useEffect(() => {
     
     if(emailSession){
-      history.push('/dashboard');
+      navigate('/dashboard');
         window.location.reload();
     }
 
@@ -40,33 +38,28 @@ function Login() {
       }
     }
     window.addEventListener("scroll", reveal);  
-  }, [emailSession]);
+  }, [emailSession, navigate]);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/users/login", {
+      const response = await fetch("https://viewster-backend.vercel.app/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
-      const data = await response.json();
+      //const data = await response.json();
       if (response.status === 200) {
         const userEmail = email; 
         login(userEmail); 
-        history.push('/dashboard');
+        navigate('/dashboard');
         window.location.reload();
       }
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const handleAppleSignIn = (data) => {
-    
-    console.log(data);
   };
 
   const [message, setMessage] = useState('');

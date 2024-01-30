@@ -47,7 +47,7 @@
     /*Desktop*/
 @media (min-width: 1025px) {
   .navbar2 {
-    width: 84vw;
+    width: 84%;
     position: fixed;
     top: 0;
     right: 0;

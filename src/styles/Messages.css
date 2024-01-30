@@ -38,6 +38,72 @@ tbody tr:hover{
     cursor: pointer;
 }
 
+.w-30{
+    max-width: 30% !important;
+}
+
+
+.w-70{
+    max-width: 70% !important;
+}
+
+.chat-list{
+    border-right: 1px solid rgba(255, 255, 255, 0.197);
+    padding-right: 1rem;
+}
+
+.chat-subject{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.selected-chat{
+    background-color: rgba(0, 194, 236, 0.18);
+}
+
+.chat-container{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.chat-updated-at{
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.message{
+    color: #fff;
+    width: 40%;
+    border-radius: 20px;
+    background-color: #2E2E2E;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 14px;
+    margin-bottom: 1rem;
+}
+
+.message-input{
+    display: flex;
+    align-items: center;
+}
+
+.send-button{
+    background: transparent !important;
+    box-shadow: none;
+}
+
+.messages-container{
+    height: 80vh;
+}
+
 /*Desktop*/
 @media (min-width: 1025px) {
     .dashboard-component{
@@ -52,11 +118,24 @@ tbody tr:hover{
     }
 
     .searchbar{
-        margin-bottom: 2rem !important;
+        margin-bottom: 0.5rem !important;
         border: 1px solid #ffffff8a !important;
         background: transparent !important;
         border-radius: 8px !important;
-        width: 40% !important;
+        width: 100% !important;
+        color: white !important;
+        font-size: 12px !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    .reply-input{
+        border: 1px solid #ffffff8a !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        width: 100% !important;
         color: white !important;
         font-size: 12px !important;
         padding-top: 0.6rem !important;
@@ -78,6 +157,12 @@ tbody tr:hover{
     .button-status-completed{
         background-color: #02a8f534  !important;
         color: #0d6efd !important;
+    }
+
+    .chat-list{
+        width: 100%;
+        height: 89vh;
+        overflow-y: auto;
     }
 }
 

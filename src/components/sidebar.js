@@ -1,27 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
 import { useSession } from '../sessionContext';
-import { useHistory } from "react-router-dom";
 
 const Sidebar = () => {
   const { login, logout } = useSession();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Chiamiamo la funzione di logout dal contesto di sessione
     logout();
-    history.push('/login');
-    window.location.reload();
-    // Effettuare altre azioni, come reindirizzamento o pulizia
+    navigate('/login');
+    // In genere non è consigliabile usare window.location.reload() in una SPA
+    // Se hai bisogno di reinizializzare lo stato, considera di farlo tramite React Context o Redux
   };
 
   return (
     <div className="sidebar">
-      <a className="navbar-brand" href="/">Viewster</a>
-      <div>
-        <button className="btn btn-primary button-start-campaign" type="submit">Build a Campaign</button>
-      </div>
+      <NavLink className="navbar-brand" to="/">Viewster</NavLink>
+      <NavLink to="/build">
+        <div>
+          <button className="btn btn-primary button-start-campaign" type="submit">Build a Campaign</button>
+        </div>
+      </NavLink>
 
       <div className='sidebar-list'>
         <div className='title-list'>
@@ -29,30 +29,34 @@ const Sidebar = () => {
         </div>
         <div className='pages-list'>
           <div className='page-list'>
-            <NavLink exact to="/dashboard" activeClassName="active">
+            <NavLink 
+              to="/dashboard" 
+              className={({ isActive }) => isActive ? "active" : undefined}>
               All Campaigns
             </NavLink>
           </div>
 
           <div className='page-list'>
-            <NavLink to="/messages" activeClassName="active">
+            <NavLink 
+              to="/messages" 
+              className={({ isActive }) => isActive ? "active" : undefined}>
               Messages
             </NavLink>
           </div>
 
           <div className='page-list'>
-            <NavLink to="/invoices" activeClassName="active">
+            <NavLink 
+              to="/invoices" 
+              className={({ isActive }) => isActive ? "active" : undefined}>
               Invoices
             </NavLink>
           </div>
-
-          
         </div>
       </div>
       
       <div className='page-list page-list-logout' onClick={handleLogout}>
-            Logout
-          </div>
+        Logout
+      </div>
     </div>
   );
 };
