@@ -22,11 +22,13 @@ function BuildStep1({ data, updateData, step, onNext, currentStep, steps, closeC
       onNext();
     }
   };
-
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date();
+  const twoDaysLater = new Date(today.getTime() + (2 * 24 * 60 * 60 * 1000)); // Aggiunge 2 giorni
+  const twoDaysLaterString = twoDaysLater.toISOString().split('T')[0];
 
   const isStartDateValid = () => {
-    return startDate >= today;
+    const today_date = new Date().toISOString().split('T')[0];
+    return startDate >= today_date;
   };
 
   const isEndDateValid = () => {
@@ -111,7 +113,7 @@ function BuildStep1({ data, updateData, step, onNext, currentStep, steps, closeC
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
                     className="form-control input-field-time"
-                    min={today}
+                    min={twoDaysLaterString}
                   />
                 </div>
               </div>

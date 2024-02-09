@@ -30,6 +30,7 @@
     display: flex;
     align-items: center; 
     border-left: 1px solid rgba(255, 255, 255, 0.197) !important;
+    cursor: pointer;
   }
 
   .user-nickname{
@@ -43,6 +44,28 @@
   .user-image{
     display: flex;
   }
+
+  .hover-container {
+    display: none;
+    position: absolute;
+    top: 4vh;
+    right: 2vh;
+    background-color: transparent;
+  }
+
+  .hover-body {
+    margin-top: 1rem;
+    display: block;
+    background-color: #131313;
+    color: white;
+    padding: 1.5rem;
+    width: 15vw;
+    border-radius: 12px;
+  }
+
+    .user-info:hover .hover-container {
+        display: block;
+    }
 
     /*Desktop*/
 @media (min-width: 1025px) {

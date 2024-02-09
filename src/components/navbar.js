@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { useSession } from '../sessionContext';
 import Sidebar from '../components/sidebar';
@@ -9,8 +9,15 @@ const Navbar = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  const { session } = useSession();
+  const { session, logout } = useSession();
   const email = session ? session.email : null;
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const getPageTitle = () => {
     switch (path) {
@@ -61,12 +68,17 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" height="16px" fill="#fff" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                     </div>
                     <div className='user-nickname'>
-                    {email &&(
-                      email
-                    )}
+                      {email && ( email )}
                     </div>
                     <div className='navbar-icon'>
                         <svg xmlns="http://www.w3.org/2000/svg" height="10px" fill="#fff" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+                    </div>
+                    <div className='hover-container'>
+                      <div className='hover-body'>   
+                        <div className='page-list-logout' onClick={handleLogout}>
+                          Logout
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -96,11 +108,11 @@ const Navbar = () => {
                       Messages <p className="nav-link-span">&lt;</p>
                     </NavLink>
                 </li>
-                <li className="nav-item">
+                {/*<li className="nav-item">
                     <NavLink to="/invoices" activeClassName="active" className="nav-link nav-link2">
                       Invoices <p className="nav-link-span">&lt;</p>
                     </NavLink>
-                </li>
+                </li>*/}
             </ul>
             <NavLink to="/build">
               <button className="btn btn-primary btn-create" type="submit">Build a Campaign</button>

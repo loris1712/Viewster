@@ -72,7 +72,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
       setBudget(e.target.value);
     }
   
-    if (priceBy === "Targeted") {
+    if (priceBy === "Budget") {
       // Calcola le visualizzazioni qui...
       const calculatedViews = calculateViews(newBudget, area);
       setViews(calculatedViews);
@@ -129,6 +129,19 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
     }),
   };
 
+  useEffect(() => {
+    if (priceBy === "Budget") {
+      // Se l'utente sta pianificando in base al budget, ricalcola le visualizzazioni.
+      const calculatedViews = calculateViews(budget, area);
+      setViews(calculatedViews);
+      setFinalViews(calculatedViews);
+    } else if (priceBy === "Number of Views desired" && numberViews) {
+      // Se l'utente ha specificato un numero di visualizzazioni desiderate, ricalcola il budget.
+      const calculatedBudget = calculateBudget(numberViews, area);
+      setBudget(calculatedBudget);
+    }
+  }, [area, priceBy, budget, numberViews]);
+
   return (
     <div className='buildstep-container'>
       <h2>{step}</h2>
@@ -136,7 +149,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
         <div className='row align-items-start first-section step-container'>
           <div className='col'>
             <div className='multi-select'>
-            <h3>Does the video have</h3>
+            <h3>Does the video have (select all that apply)</h3>
             <Select
               isMulti
               value={selectedOptions}
@@ -149,7 +162,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
           
           <div className='col'>
             <div>
-              <h3>Views type</h3>
+              <h3>Campaign Type</h3>
               <div className='labels-container'>
                   <label className='label-container'>
                     <input
@@ -180,7 +193,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
             </div>
 
             <div>
-              <h3>Choose area</h3>
+              <h3>Select Target Countries</h3>
               <div className='labels-container'>
                   <label className='label-container'>
                     <input
@@ -191,7 +204,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                       className="radio-checkbox"
                     />
                     <div className=''>
-                      <h4>Global</h4>
+                      <h4>Global (cheapest)</h4>
                     </div>
                   </label>
 
@@ -204,7 +217,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                       className="radio-checkbox"
                     />
                     <div className=''>
-                      <h4>Only US</h4>
+                      <h4>Only US (most expensive)</h4>
                     </div>
                   </label>
               </div>
@@ -220,13 +233,13 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
               <label className='label-container'>
                 <input
                   type="radio"
-                  value="Targeted"
-                  checked={priceBy === "Targeted"}
-                  onChange={() => setPriceBy("Targeted")}
+                  value="Budget"
+                  checked={priceBy === "Budget"}
+                  onChange={() => setPriceBy("Budget")}
                   className="radio-checkbox"
                 />
                  <div className=''>
-                  <h4>Targeted</h4>
+                  <h4>Budget</h4>
                 </div>
               </label>
             </div>
@@ -235,15 +248,15 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                 <span className="input-group-text">$</span>
                 <input
                   type="text"
-                  value={priceBy == "Targeted" ? budget : ''}
+                  value={priceBy == "Budget" ? budget : ''}
                   onChange={handleChangeBudget}
                   placeholder="Enter your budget"
                   className="form-control input-field-text"
-                  disabled={priceBy !== "Targeted"}
+                  disabled={priceBy !== "Budget"}
                 />
               </div>
               <div className='input-field-counter'>
-                {priceBy == "Targeted" ? views.toLocaleString('en-US') : '0'} views
+                {priceBy == "Budget" ? views.toLocaleString('en-US') : '0'} views
               </div>  
             </div>
             </div>

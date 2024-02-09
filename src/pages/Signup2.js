@@ -385,7 +385,7 @@ function Signup2() {
                       <div className="form-check">
                         <input className='form-check-input' type='checkbox' value='' id='flexCheckDefault' checked={termsChecked} onChange={() => setTermsChecked(!termsChecked)} required />
                         <label className='form-check-label' htmlFor='flexCheckDefault'>
-                          I accept the <span>terms and conditions</span>.
+                          I accept the <a href='/terms' className=''><span>terms and conditions</span></a>.
                         </label>
                       </div>
                     </div>

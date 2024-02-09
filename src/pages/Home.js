@@ -43,8 +43,12 @@ function Home() {
                   Viewster is an artist-first platform that allows you to promote your music, maximize views and build your community.
                 </div>
                 <div className='btns-flex'>
-                  <button className="btn btn-primary btn-start" type="submit">Start a Campaign</button>
-                  <button className="btn btn-secondary btn-login" type="submit">Learn more</button>
+                  <a href="/signup">
+                    <button className="btn btn-primary btn-start" type="submit">Start a Campaign</button>
+                  </a>
+                  <a href="#services">
+                    <button className="btn btn-secondary btn-login" type="submit">Learn more</button>
+                  </a>
                 </div>
               </div>
               <div className="col">
@@ -66,7 +70,9 @@ function Home() {
                     </div>
                     <h5>Real Views, Real Users</h5>
                     <p>We drive Real Views and Real Users from YouTube to your videos.</p>
-                    <button className="btn btn-primary btn-service" type="submit">Start a Campaign &gt;</button>
+                    <a href="/signup">
+                      <button className="btn btn-primary btn-service" type="submit">Start a Campaign &gt;</button>
+                    </a>
                   </div>
                   <div className='service-card transition'>
                     <div className='icon'>
@@ -74,7 +80,9 @@ function Home() {
                     </div>
                     <h5>Transparent Reporting</h5>
                     <p>All views purchased show up in your YouTube Analytics as "YouTube Advertising”.</p>
-                    <button className="btn btn-primary btn-service" type="submit">Start a Campaign &gt;</button>
+                    <a href="/signup">
+                      <button className="btn btn-primary btn-service" type="submit">Start a Campaign &gt;</button>
+                    </a>
                   </div>
                   <div className='service-card transition'>
                     <div className='icon'>
@@ -82,7 +90,9 @@ function Home() {
                     </div>
                     <h5>Delivery Guarantee</h5>
                     <p>You pay only for views that we deliver. Any undelivered views are refunded.</p>
-                    <button className="btn btn-primary btn-service" type="submit">Start a Campaign &gt;</button>
+                    <a href="/signup">
+                      <button className="btn btn-primary btn-service" type="submit">Start a Campaign &gt;</button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -150,7 +160,9 @@ function Home() {
                       <div className='timeline-text'>
                         <h3>4. Pay and Begin</h3>
                         <h5>Thats it! <span>Pay for your campaign</span> and Viewster will do the rest!</h5>
-                        <button className="btn btn-primary btn-start-timeline" type="submit">Start now</button>
+                        <a href="/signup">
+                          <button className="btn btn-primary btn-start-timeline" type="submit">Start now</button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -197,7 +209,9 @@ function Home() {
                     <div className='pricing-amount'>
                       $325
                     </div>
-                    <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
+                    <a href="/signup">
+                      <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
+                    </a>
                   </div>
                   <div className='pricing-card-colored transition'>
                     <h5>
@@ -230,7 +244,9 @@ function Home() {
                     <div className='pricing-amount'>
                       $650
                     </div>
-                    <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
+                    <a href="/signup">
+                      <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
+                    </a>
                   </div>
                   <div className='pricing-card transition'>
                     <h5>
@@ -263,7 +279,9 @@ function Home() {
                     <div className='pricing-amount'>
                       $Custom
                     </div>
-                    <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
+                    <a href="/signup">
+                      <button className="btn btn-primary btn-pricing" type="submit">Start a Campaign</button>
+                    </a>
                   </div>
                 </div>
               </div>

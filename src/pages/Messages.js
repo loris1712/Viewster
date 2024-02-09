@@ -11,7 +11,6 @@ function ChatList({ onSelectChat, selectedChat }) {
   const { session } = useSession();
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredTickets, setFilteredTickets] = useState(chats);
-
   useEffect(() => {
     if (Array.isArray(chats)) {
       const lowercasedQuery = searchQuery.toLowerCase();

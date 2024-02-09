@@ -14,7 +14,7 @@ import BuildStep4 from '../components/builder/buildstep4';
 
 const steps = [
   'Setup a new campaign',
-  'Add more informations',
+  'Campaign Information',
   'Pay and Begin',
   'Thank you for submitting!',
 ];

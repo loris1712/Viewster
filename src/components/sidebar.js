@@ -10,8 +10,6 @@ const Sidebar = () => {
   const handleLogout = () => {
     logout();
     navigate('/login');
-    // In genere non è consigliabile usare window.location.reload() in una SPA
-    // Se hai bisogno di reinizializzare lo stato, considera di farlo tramite React Context o Redux
   };
 
   return (
@@ -44,13 +42,13 @@ const Sidebar = () => {
             </NavLink>
           </div>
 
-          <div className='page-list'>
+          {/*<div className='page-list'>
             <NavLink 
               to="/invoices" 
               className={({ isActive }) => isActive ? "active" : undefined}>
               Invoices
             </NavLink>
-          </div>
+          </div>*/}
         </div>
       </div>
       
