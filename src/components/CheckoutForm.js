@@ -6,6 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import '../styles/BuildStep.css';
 import { useSession } from '../sessionContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckoutForm({email, data, paymentIntentId, budget}) {
   const stripe = useStripe();
@@ -19,6 +20,7 @@ export default function CheckoutForm({email, data, paymentIntentId, budget}) {
   const { session } = useSession();
  
   const [userId, setUserId] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
       const sessionEmail = session ? session.email : null;
@@ -66,52 +68,51 @@ export default function CheckoutForm({email, data, paymentIntentId, budget}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
+      console.error("Stripe is not inizialized.");
       return;
     }
-
+  
     setIsLoading(true);
-
-    fetch("https://viewster-backend.vercel.app/campaigns/saveCampaign", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        data: data,
-        paymentIntentId: paymentIntentId,
-        campaignStatus: 'Pending Start',
-        ownerId: userId,
-       }),
-    })
-      .then((res) => res.json())
       //.then((data) => setClientSecret(data.clientSecret));
-
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "https://viewster.vercel.app/confirmedPayment",
-        receipt_email: email2,
-      },
-    });
-
-    
-
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occurred.");
+  
+    try {
+      const { error, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        redirect: 'if_required',
+        confirmParams: {
+          //return_url: "https://viewster.vercel.app/confirmedPayment",
+          receipt_email: email2,
+        },
+      });
+  
+      if (error) {
+        console.error("An unexpected error occurred:", error.message);
+        setIsLoading(false);
+      } else {
+        fetch("https://viewster-backend.vercel.app/campaigns/saveCampaign", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          data: data,
+          paymentIntentId: paymentIntentId,
+          campaignStatus: 'Pending Start',
+          ownerId: userId,
+         }),
+      })
+        .then((res) => res.json())
+        .then((responseData) => {
+          navigate('/confirmedPayment');
+          window.location.reload();
+        })
+      }
+    } catch (error) {
+      console.error("Error during the payment process:", error);
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
+  
 
   const paymentElementOptions = {
     layout: "tabs"

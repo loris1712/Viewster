@@ -50,7 +50,7 @@ function Dashboard2() {
         });
         const data = await response.json();
         if (data) {
-          console.log(data);
+          //console.log(data);
         }
       } catch (error) {
         console.error(error);

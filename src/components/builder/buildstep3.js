@@ -30,13 +30,13 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
 
   const handleSubmit = async () => {
     //updateData({ title, videoLink, startDate, endDate, days, radioOption });
-    console.log("Pagamento riuscito");
+    console.log("Payment done.");
     //onNext(); 
   };
 
   useEffect(() => {
     
-  console.log(data)
+  //console.log(data)
   
     fetch("https://viewster-backend.vercel.app/payments/create-payment-intent", {
       method: "POST",

@@ -99,12 +99,12 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <NavLink exact to="/dashboard" activeClassName="active" className="nav-link nav-link2">
+                    <NavLink exact to="/dashboard" className="nav-link nav-link2">
                       All Campaigns <p className="nav-link-span">&lt;</p>
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/messages" activeClassName="active" className="nav-link nav-link2">
+                    <NavLink to="/messages" className="nav-link nav-link2">
                       Messages <p className="nav-link-span">&lt;</p>
                     </NavLink>
                 </li>

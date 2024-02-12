@@ -45,7 +45,7 @@ function Build() {
     const nextStep = () => {
       if (currentStep < steps.length - 1) {
         setCurrentStep(currentStep + 1);
-        console.log(campaignData);
+        //console.log(campaignData);
       }
     };
   
