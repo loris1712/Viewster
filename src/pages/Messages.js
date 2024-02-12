@@ -23,7 +23,7 @@ function ChatList({ onSelectChat, selectedChat }) {
 
   useEffect(() => {
     const sessionEmail = session ? session.email : null;
-    fetch("http://viewster-backend.vercel.app/tickets/getTickets", {
+    fetch("https://viewster-backend.vercel.app/tickets/getTickets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
