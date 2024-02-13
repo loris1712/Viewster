@@ -39,8 +39,13 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
     return basicConditions && viewsCondition;
   };
 
-  const handleChange = (selected) => {
-    setSelectedOptions(selected);
+  const handleChange = (event) => {
+    const { value, checked } = event.target;
+    const newSelectedOptions = checked
+      ? [...selectedOptions, value]
+      : selectedOptions.filter(option => option !== value);
+
+    setSelectedOptions(newSelectedOptions);
   };
 
   const calculateViews = (budget, area) => {
@@ -150,13 +155,22 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
           <div className='col'>
             <div className='multi-select'>
             <h3>Does the video have (select all that apply)</h3>
-            <Select
-              isMulti
-              value={selectedOptions}
-              onChange={handleChange}
-              options={options}
-              styles={customStyles}
-            />
+            <div className='options'>
+              {options.map((option, index) => (
+                <div>
+                  <label key={index} className='checkbox-label'>
+                    <input
+                      type='checkbox'
+                      name={option.value}
+                      value={option.value}
+                      checked={selectedOptions.includes(option.value)}
+                      onChange={handleChange}
+                    />
+                    {option.label}
+                  </label>
+                </div>
+              ))}
+            </div>
             </div>
           </div>
           
@@ -243,7 +257,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                 </div>
               </label>
             </div>
-            <div style={{display: 'flex', alignItems: 'baseline'}}>
+            <div className='budget-container'>
               <div className="input-group  w-70">
                 <span className="input-group-text">$</span>
                 <input
@@ -251,7 +265,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                   value={priceBy == "Budget" ? budget : ''}
                   onChange={handleChangeBudget}
                   placeholder="Enter your budget"
-                  className="form-control input-field-text"
+                  className="form-control input-field-text-2"
                   disabled={priceBy !== "Budget"}
                 />
               </div>
@@ -277,13 +291,13 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                 </div>
               </label>
             </div>
-            <div style={{display: 'flex', alignItems: 'baseline'}}>
+            <div className='budget-container'>
               <input
                 type="text"
                 value={priceBy == "Number of Views desired" ? numberViews : ''}
                 onChange={handleNumberViewsChange}
                 placeholder="Enter number of views"
-                className="form-control input-field-text w-70"
+                className="form-control input-field-text-2 w-70"
                 disabled={priceBy !== "Number of Views desired"}
               />
               <div className='input-field-counter'>

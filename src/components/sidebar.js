@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <NavLink className="navbar-brand" to="/">Viewster</NavLink>
+      <NavLink className="navbar-brand" to="/dashboard">Viewster</NavLink>
       <NavLink to="/build">
         <div>
           <button className="btn btn-primary button-start-campaign" type="submit">Build a Campaign</button>

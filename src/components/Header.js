@@ -1,8 +1,12 @@
 // pages/Home.js
 import React from 'react';
 import '../styles/Header.css';
+import { useSession } from '../sessionContext';
 
 function Header() {
+  const { session } = useSession();
+  const emailSession = session ? session.email : null;
+
   return (
     <div className='header'>
       <nav className="navbar navbar-expand-lg fixed-top desktop">
@@ -30,13 +34,29 @@ function Header() {
                     <a className="nav-link" href="/#testimonials">Testimonials</a>
                 </li>
             </ul>
-            <a href="/login">
-              <button className="btn btn-secondary btn-login" type="submit">Login</button>
-            </a>
             
-            <a href="/signup">
-              <button className="btn btn-primary" type="submit">Start a Campaign</button>
-            </a>
+
+            {emailSession ?
+            (
+              <a href="/dashboard">
+                <button className="btn btn-secondary btn-login" type="submit">My account</button>
+              </a>
+            ):(
+              <a href="/login">
+                <button className="btn btn-secondary btn-login" type="submit">Login</button>
+              </a>
+            )}
+            
+            {emailSession ?
+            (
+              <a href="/build">
+                <button className="btn btn-primary" type="submit">Start a Campaign</button>
+              </a>
+            ):(
+              <a href="/signup">
+                <button className="btn btn-primary" type="submit">Start a Campaign</button>
+              </a>
+            )}
             </div>
             
         </div>

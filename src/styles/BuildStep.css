@@ -72,11 +72,6 @@ p{
     font-size: 14px;
 }
 
-.labels-container{
-    display: flex;
-    margin-bottom: 1rem;
-}
-
 .label-container{
     display: flex;
     align-items: baseline;
@@ -93,14 +88,14 @@ p{
   
   .date-picker .fa-calendar {
     position: absolute;
-    right: 10px; /* Regola questa distanza secondo le tue esigenze */
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: white;
   }
   
   .input-field-time {
-    padding-right: 30px; /* Lascia spazio per l'icona */
+    padding-right: 30px;
   }
   
 
@@ -114,11 +109,6 @@ p{
 
 .input-group{
     align-items: baseline !important;
-}
-
-.input-field-counter{
-    color: #fff;
-    margin-left: auto;
 }
 
 .input-group-text{
@@ -153,6 +143,17 @@ p{
     line-height: 130% !important;
 }
 
+.options .checkbox-label{
+    color: white;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.options .checkbox-label input{
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
 /*Desktop*/
 @media (min-width: 1025px) {
     .input-field-time{
@@ -183,8 +184,33 @@ p{
         padding-right: 0.8rem !important;
     }
 
+    .input-field-text-2{
+        margin-bottom: 0.5rem !important;
+        margin-right: 1rem;
+        border: 1px solid #ffffff8a !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        color: white !important;
+        font-size: 12px !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
     .right-col{
         margin-top: 1.5rem;
+    }
+
+    .labels-container{
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    
+    .input-field-counter{
+        color: #fff;
+        margin-left: 0.5rem;
     }
 }
 
@@ -218,7 +244,38 @@ p{
         padding-right: 0.8rem !important;
     }
 
+    .input-field-text-2{
+        margin-bottom: 0.5rem !important;
+        margin-right: 1rem;
+        border: 1px solid #ffffff8a !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        color: white !important;
+        font-size: 12px !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
     .multi-select{
         margin-bottom: 1rem;
+    }
+
+    .budget-container{
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 1rem;
+    }
+
+    .labels-container{
+        display: flex;
+        margin-bottom: 0.5rem;
+    }
+
+    
+    .input-field-counter{
+        color: #fff;
+        margin-left: auto;
     }
 }
