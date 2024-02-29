@@ -33,7 +33,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
   };
 
   const isFormValid = () => {
-    const basicConditions = viewsType && priceBy && budget && area;
+    const basicConditions = priceBy && budget && area;
     const viewsCondition = views || numberViews;
 
     return basicConditions && viewsCondition;
@@ -175,7 +175,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
           </div>
           
           <div className='col'>
-            <div>
+            {/*<div>
               <h3>Campaign Type</h3>
               <div className='labels-container'>
                   <label className='label-container'>
@@ -204,7 +204,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
                     </div>
                   </label>
               </div>
-            </div>
+              </div>*/}
 
             <div>
               <h3>Select Target Countries</h3>
