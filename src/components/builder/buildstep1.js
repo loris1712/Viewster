@@ -16,6 +16,8 @@ function BuildStep1({ data, updateData, step, onNext, currentStep, steps, closeC
   const [budget, setBudget] = useState(data.budget || '');
   const [finalViews, setFinalViews] = useState(0);
 
+  const [isValid, setIsValid] = useState(true);
+
   const handleSubmit = () => {
     if (isFormValid()) {
       updateData({ title, videoLink, startDate, endDate, days, type, selectedOptions, viewsType, priceBy, finalViews, budget, area });
@@ -23,7 +25,7 @@ function BuildStep1({ data, updateData, step, onNext, currentStep, steps, closeC
     }
   };
   const today = new Date();
-  const twoDaysLater = new Date(today.getTime() + (2 * 24 * 60 * 60 * 1000)); // Aggiunge 2 giorni
+  const twoDaysLater = new Date(today.getTime() + (2 * 24 * 60 * 60 * 1000)); 
   const twoDaysLaterString = twoDaysLater.toISOString().split('T')[0];
 
   const isStartDateValid = () => {
@@ -38,6 +40,20 @@ function BuildStep1({ data, updateData, step, onNext, currentStep, steps, closeC
   const isFormValid = () => {
     return type && isStartDateValid() && isEndDateValid() && days && title && videoLink;
   };
+
+  function validaUrlYouTube(url) {
+    var regExpStandard = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+    var regExpUnlisted = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[^\s&]+(&list=)?$/;
+    var regExpPublic = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[^\s]+$/;
+
+    return url.match(regExpStandard) && (url.match(regExpUnlisted) || url.match(regExpPublic));
+  }
+
+  function handleInputChange(e) {
+    const url = e.target.value;
+    setVideoLink(url);
+    setIsValid(validaUrlYouTube(url));
+  }
 
   useEffect(() => {
     if (startDate && endDate) {
@@ -171,14 +187,17 @@ function BuildStep1({ data, updateData, step, onNext, currentStep, steps, closeC
               <h3>YouTube Video Link </h3>
               <div className='subtitle'> &nbsp; (must be unlisted or Public)</div>
             </div>
-              
+
               <input
                 type="text"
                 value={videoLink}
-                onChange={(e) => setVideoLink(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="YouTube Video Link"
-                className="form-control input-field-text"
+                className={`form-control input-field-text ${isValid ? '' : 'is-invalid'}`}
               />
+              {!isValid && <div className="invalid-feedback">
+                Please enter a valid YouTube URL.
+              </div>}
             </div>
           </div>
         </div>

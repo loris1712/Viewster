@@ -20,7 +20,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
   const [viewsType, setViewsType] = useState(data.viewsType || '');
   const [area, setArea] = useState(data.area || 'Global');
   const [priceBy, setPriceBy] = useState(data.priceBy || '');
-  const [numberViews, setNumberViews] = useState(data.numberViews || '');
+  const [numberViews, setNumberViews] = useState(data.numberViews || ''); // add int not string
   const [budget, setBudget] = useState(parseFloat(data.budget) || '');
   const [views, setViews] = useState(0);
   const [finalViews, setFinalViews] = useState(0);
@@ -87,7 +87,7 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
 
   const handleNumberViewsChange = (e) => {
     const newNumberViews = e.target.value;
-    setNumberViews(newNumberViews);
+    setViews(newNumberViews);
     setFinalViews(newNumberViews);
     if (priceBy === "Number of Views desired") {
       // Calcola il budget qui...
@@ -140,12 +140,12 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
       const calculatedViews = calculateViews(budget, area);
       setViews(calculatedViews);
       setFinalViews(calculatedViews);
-    } else if (priceBy === "Number of Views desired" && numberViews) {
+    } else if (priceBy === "Number of Views desired" && views) {
       // Se l'utente ha specificato un numero di visualizzazioni desiderate, ricalcola il budget.
-      const calculatedBudget = calculateBudget(numberViews, area);
+      const calculatedBudget = calculateBudget(views, area);
       setBudget(calculatedBudget);
     }
-  }, [area, priceBy, budget, numberViews]);
+  }, [area, priceBy, budget, views]);
 
   return (
     <div className='buildstep-container'>
@@ -294,15 +294,20 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
             <div className='budget-container'>
               <input
                 type="text"
-                value={priceBy == "Number of Views desired" ? numberViews : ''}
+                value={priceBy == "Number of Views desired" ? views : ''}
                 onChange={handleNumberViewsChange}
                 placeholder="Enter number of views"
                 className="form-control input-field-text-2 w-70"
                 disabled={priceBy !== "Number of Views desired"}
               />
               <div className='input-field-counter'>
-                $ {priceBy === "Number of Views desired" ? parseFloat(budget).toFixed(2) : '0'}
-              </div> 
+                $ {priceBy === "Number of Views desired" && !isNaN(parseFloat(budget)) ? parseFloat(budget).toLocaleString('en-US', {
+                  style: 'decimal',
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }) : '0.00'}
+              </div>
+
             </div>
             </div>
           </div>

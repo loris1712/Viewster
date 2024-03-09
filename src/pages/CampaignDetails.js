@@ -16,6 +16,7 @@ function CampaignDetails() {
   const { campaignId } = location.state || {};
   const [campaign, setCampaign] = useState([]);
   const [sentenceDaysLeft, setSentenceDaysLeft] = useState('');
+  const [calculatedSpentBudget, setCalculatedSpentBudget] = useState('');
 
   const calculateProgress = (BudgetSpent, Budget) => {
     if (Budget === 0) {
@@ -52,7 +53,17 @@ function CampaignDetails() {
     const dayWord = daysLeft === 1 ? 'day' : 'days';
     const dayWord2 = totalDuration === 1 ? 'day' : 'days';
 
-    setSentenceDaysLeft(daysLeft + ' '  + dayWord + ' left of ' + totalDuration + ' ' + dayWord2)
+    setSentenceDaysLeft(daysLeft + ' '  + dayWord + ' left of ' + totalDuration + ' ' + dayWord2);
+
+    let costPerView;
+    if (campaign.Area === 'Global') {
+      costPerView = campaign.Budget > 1000 ? 0.006 : 0.0065;
+    } else if (campaign.Area === 'US') {
+      costPerView = 0.018;
+    }
+    let currentViews = parseFloat(campaign.CurrentTotalViews * costPerView).toLocaleString('en-US');
+    setCalculatedSpentBudget(currentViews);
+    console.log(calculatedSpentBudget)
 
   }, [campaign]);
 
@@ -171,15 +182,15 @@ function CampaignDetails() {
                     </div>
                   </div>
 
-                  {campaign.BudgetSpent && campaign.Budget &&
+                  {campaign.BudgetSpent && campaign.Budget && calculatedSpentBudget &&
                     <div className="progress-bar">
-                      <div className="progress" style={{ width: `${calculateProgress(campaign.BudgetSpent, campaign.Budget)}%` }}></div>
+                      <div className="progress" style={{ width: `${calculateProgress(calculatedSpentBudget, campaign.Budget)}%` }}></div>
                     </div>
                   }
 
                   <div className='counter-container'>
                     <div className='counter'>
-                      $ {campaign.BudgetSpent}
+                      $ {calculatedSpentBudget}
                     </div>
                     <div className='counter total-counter'>
                       $ {campaign.Budget}
@@ -193,13 +204,9 @@ function CampaignDetails() {
                   {campaign.SelectedOptions && Array.isArray(JSON.parse(campaign.SelectedOptions)) && JSON.parse(campaign.SelectedOptions).map((attribute, index) => (
                     <div className='campaign-attribute' key={index}>
                       <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" fill="#00C2EC" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                      <div className='attribute-name'>{attribute.value}</div>
+                      <div className='attribute-name'>{attribute}</div>
                     </div>
                   ))}
-                    <div className='campaign-attribute'>
-                      <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" fill="#00C2EC" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                      <div className='attribute-name'>Drugs</div>
-                    </div>
                   </div>
                 </div>
               </div>
