@@ -36,7 +36,7 @@ function Header() {
             </ul>
             
 
-            {emailSession ?
+            {/*{emailSession ?
             (
               <a href="/dashboard">
                 <button className="btn btn-secondary btn-login" type="submit">My account</button>
@@ -45,7 +45,11 @@ function Header() {
               <a href="/login">
                 <button className="btn btn-secondary btn-login" type="submit">Login</button>
               </a>
-            )}
+            )}*/}
+
+              <a href="/login">
+                <button className="btn btn-secondary btn-login" type="submit">Login</button>
+              </a>
             
             {emailSession ?
             (

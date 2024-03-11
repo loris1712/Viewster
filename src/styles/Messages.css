@@ -102,6 +102,40 @@ tbody tr:hover{
 
 .messages-container{
     height: 80vh;
+    overflow-y: scroll;
+}
+
+.messages-container::-webkit-scrollbar {
+    width: 7px; 
+    background-color: transparent; 
+    border-radius: 100px; 
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background-color: #131313;
+    border-radius: 100px; 
+}
+
+
+.messages-container {
+    scrollbar-width: thin; 
+    scrollbar-color: #131313 transparent; 
+}
+
+.message-from {
+    margin-left: auto;
+    background-color: rgba(0, 194, 236, 0.18);
+    margin-right: 0.5rem;
+}
+
+.message-time{
+    color: #d5d5d5;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem !important;
+    text-align: right;    
 }
 
 /*Desktop*/
