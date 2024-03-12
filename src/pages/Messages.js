@@ -149,10 +149,10 @@ function Messages() {
       <Sidebar />
         <div className='dashboard-component'>
           <div className="row align-items-start first-section">
-            <div className="col w-30">
+            <div className="col w-30-2">
               <ChatList onSelectChat={setSelectedChat} selectedChat={selectedChat} />
             </div>
-            <div className="col w-70">
+            <div className="col w-70-2">
               {selectedChat && <Replies selectedChat={selectedChat} />}
             </div>
         </div>

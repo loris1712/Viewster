@@ -52,7 +52,7 @@ function Home() {
                 </div>
               </div>
               <div className="col">
-                <img src="../../increaseimage.svg" className="img-fluid" width={'100%'} height={'100%'} loading="lazy"/>
+                <img src="../../increaseimage.png" className="img-fluid" width={'100%'} height={'100%'}/>
               </div>
           </div>
           <div className="row align-items-start home-section" id="services">

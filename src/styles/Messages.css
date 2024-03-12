@@ -38,15 +38,6 @@ tbody tr:hover{
     cursor: pointer;
 }
 
-.w-30{
-    max-width: 30% !important;
-}
-
-
-.w-70{
-    max-width: 70% !important;
-}
-
 .chat-list{
     border-right: 1px solid rgba(255, 255, 255, 0.197);
     padding-right: 1rem;
@@ -77,19 +68,6 @@ tbody tr:hover{
     color: #fff;
 }
 
-.message{
-    color: #fff;
-    width: 40%;
-    border-radius: 20px;
-    background-color: #2E2E2E;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 14px;
-    margin-bottom: 1rem;
-}
-
 .message-input{
     display: flex;
     align-items: center;
@@ -98,11 +76,6 @@ tbody tr:hover{
 .send-button{
     background: transparent !important;
     box-shadow: none;
-}
-
-.messages-container{
-    height: 80vh;
-    overflow-y: scroll;
 }
 
 .messages-container::-webkit-scrollbar {
@@ -116,7 +89,6 @@ tbody tr:hover{
     border-radius: 100px; 
 }
 
-
 .messages-container {
     scrollbar-width: thin; 
     scrollbar-color: #131313 transparent; 
@@ -124,7 +96,7 @@ tbody tr:hover{
 
 .message-from {
     margin-left: auto;
-    background-color: rgba(0, 194, 236, 0.18);
+    background-color: rgba(0, 194, 236, 0.18) !important;
     margin-right: 0.5rem;
 }
 
@@ -140,6 +112,34 @@ tbody tr:hover{
 
 /*Desktop*/
 @media (min-width: 1025px) {
+
+    .w-30-2{
+        max-width: 30% !important;
+    }
+    
+    
+    .w-70-2{
+        max-width: 70% !important;
+    }
+
+    .messages-container{
+        height: 80vh;
+        overflow-y: scroll;
+    }
+
+    .message{
+        color: #fff;
+        width: 40%;
+        border-radius: 20px;
+        background-color: #2E2E2E;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: 14px;
+        margin-bottom: 1rem;
+    }
+
     .dashboard-component{
         width: 84vw;
         margin-left: auto;
@@ -202,6 +202,7 @@ tbody tr:hover{
 
 /*Mobile*/
 @media (max-width: 767px) {
+
     .dashboard-component{
         width: 100vw;
         margin-left: auto;
@@ -213,8 +214,26 @@ tbody tr:hover{
         height: 100vh;
     }
 
+    .messages-container{
+        height: 62vh;
+        overflow-y: scroll;
+    }
+
     .searchbar{
         margin-bottom: 2rem !important;
+        border: 1px solid #ffffff8a !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        width: 100% !important;
+        color: white !important;
+        font-size: 12px !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    .reply-input{
         border: 1px solid #ffffff8a !important;
         background: transparent !important;
         border-radius: 8px !important;
@@ -240,6 +259,31 @@ tbody tr:hover{
         padding-bottom: 0.3rem !important;
         line-height: 0px;
         background-color: #04ec0034  !important;
+    }
+
+    .message-input {
+        margin-top: 1rem;
+    }
+
+    .message{
+        color: #fff;
+        width: 90%;
+        border-radius: 20px;
+        background-color: #2E2E2E;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: 14px;
+        margin-bottom: 1rem;
+    }
+
+    .chat-list {
+        overflow-y: scroll;
+        height: 20vh;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.197) !important;
+        border-right: none;
     }
 
 }
