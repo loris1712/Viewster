@@ -4,13 +4,12 @@ import Sidebar from '../components/sidebar';
 import Navbar from '../components/navbar';
 import '../styles/CampaignDetails.css';
 import { useSession } from '../sessionContext';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import YouTubeEmbed from '../components/YouTubeEmbed';
 
 function CampaignDetails() {
-  const [email, setEmail] = useState("");
   const { session } = useSession();
-  const email2 = session ? session.email : null;
+  const navigate = useNavigate();
 
   const location = useLocation();
   const { campaignId } = location.state || {};
@@ -63,9 +62,13 @@ function CampaignDetails() {
     }
     let currentViews = parseFloat(campaign.CurrentTotalViews * costPerView).toLocaleString('en-US');
     setCalculatedSpentBudget(currentViews);
-    console.log(calculatedSpentBudget)
+    //console.log(calculatedSpentBudget)
 
   }, [campaign]);
+
+  const handleMessages = (ticketId) => {
+    navigate('/messages?id='+ticketId);
+  };
 
   return (
     <div>
@@ -90,7 +93,8 @@ function CampaignDetails() {
                         }`}>
                         {campaign.Status}
                       </div>
-              {/*<div className="btn btn-primary button-next-builder">Stop campaign</div>*/}
+
+              <div className="btn btn-primary button-next-builder" onClick={() => handleMessages(campaign.Ticket_id)}>Messages</div>
             </div>
 
             <div className='row align-items-start first-section campaign-panel'>

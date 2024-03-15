@@ -1,16 +1,63 @@
-// pages/Dashboard.js
+// pages/Messages.js
 import React, { useEffect, useState }  from 'react'
 import Sidebar from '../components/sidebar';
 import Navbar from '../components/navbar';
 import '../styles/Messages.css';
 import { useSession } from '../sessionContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 function ChatList({ onSelectChat, selectedChat }) {
   const [chats, setChats] = useState([]);
   const { session } = useSession();
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredTickets, setFilteredTickets] = useState(chats);
+  const [filteredTickets, setFilteredTickets] = useState([]);
+
+  const saveChatDataToLocalStorage = (data) => {
+    const chatData = data.map(chat => ({ id: chat.id, updated_at: chat.updated_at }));
+    localStorage.setItem('chatData', JSON.stringify(chatData));
+  };
+
+  useEffect(() => {
+    const sessionEmail = session ? session.email : null;
+
+    fetch("https://viewster-backend.vercel.app/tickets/getTickets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        email: sessionEmail,
+       }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setChats(data);
+        //console.log(data)
+        
+        const localChatData = JSON.parse(localStorage.getItem('chatData'));
+        //console.log(localChatData)
+        checkUnreadMessages(data, localChatData);
+      });
+  }, [session]);
+
+  const checkUnreadMessages = (apiChatData, localChatData) => {
+    if (!localChatData) return;
+  
+    const updatedChatData = apiChatData.map(apiChat => {
+      const localChat = localChatData.find(localChat => localChat.id === apiChat.id);
+      if (!localChat) return apiChat;
+      const apiUpdatedAt = new Date(apiChat.updated_at);
+      const localUpdatedAt = new Date(localChat.updated_at);
+      apiChat.unread = apiUpdatedAt > localUpdatedAt;
+      return apiChat;
+    });
+  
+    if (updatedChatData.some(chat => chat.unread)) {
+      //console.log("Ci sono nuovi messaggi non letti");
+    }
+
+    //saveChatDataToLocalStorage(updatedChatData);
+    setFilteredTickets(updatedChatData);
+  };
+
   useEffect(() => {
     if (Array.isArray(chats)) {
       const lowercasedQuery = searchQuery.toLowerCase();
@@ -21,39 +68,48 @@ function ChatList({ onSelectChat, selectedChat }) {
     }
   }, [searchQuery, chats]);
 
-  useEffect(() => {
-    const sessionEmail = session ? session.email : null;
-    fetch("https://viewster-backend.vercel.app/tickets/getTickets", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        //email: 'loriscaputo17@gmail.com',
-        email: sessionEmail,
-       }),
-    })
-      .then((res) => res.json())
-      .then((data) => setChats(data));
-  }, [session]);
+  const handleChatClick = (chatId) => {
+    const selectedChat = filteredTickets.find(chat => chat.id === chatId);
+    
+    selectedChat.unread = false;
+  
+    const localChatData = JSON.parse(localStorage.getItem('chatData'));
+    const updatedLocalChatData = localChatData.map(localChat => {
+      if (localChat.id === chatId) {
+        return { ...localChat, updated_at: selectedChat.updated_at, unread: selectedChat.unread};
+      }
+      return localChat;
+    });
+    localStorage.setItem('chatData', JSON.stringify(updatedLocalChatData));
+    onSelectChat(chatId);
+  };
 
   return (
     <div className="chat-list">
       <input type="email" className="form-control searchbar" id="email" placeholder="Search a ticket" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
-      {filteredTickets.map((chat) => (
-        <div key={chat.id} onClick={() => onSelectChat(chat.id)}className={`chat-container ${selectedChat === chat.id ? 'selected-chat' : ''}`}>
-          <div className='chat-subject'>
-            {chat.subject}
+      {filteredTickets.map((chat) => {
+        const regex = /(["'])(.*?)\1/;
+        const matches = chat.subject.match(regex);
+        let subjectText = chat.subject;
+        if (matches && matches.length >= 2) {
+          subjectText = matches[2];
+        }
+        //console.log(filteredTickets)
+        return (
+          <div key={chat.id} onClick={() => handleChatClick(chat.id)} className={`chat-container ${Number(selectedChat) === chat.id ? 'selected-chat' : ''}`}>
+            <div className='chat-subject'>
+              {subjectText} <span className={`unread-container ${chat.unread  === true ? 'unread-true' : ''}`}></span>
+            </div>
+            <div className='chat-updated-at'>
+              {new Date(chat.updated_at).toLocaleDateString('en-US', {
+                month: '2-digit', 
+                day: '2-digit', 
+                year: 'numeric'
+              })}
+            </div>
           </div>
-
-          <div className='chat-updated-at'>
-            {new Date(chat.updated_at).toLocaleDateString('en-US', {
-              month: '2-digit', 
-              day: '2-digit', 
-              year: 'numeric'
-            })}
-          </div>
-
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -64,6 +120,7 @@ function Replies({ selectedChat }) {
   const { session } = useSession();
 
   useEffect(() => {
+  
     fetch("https://viewster-backend.vercel.app/tickets/getConversations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -82,7 +139,7 @@ function Replies({ selectedChat }) {
   const handleSubmit = () => {
     if (!responseMessage.trim()) return; 
     const sessionEmail = session ? session.email : null;
-    console.log(responseMessage);
+    //console.log(responseMessage);
     fetch("https://viewster-backend.vercel.app/tickets/replyTicket", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -114,6 +171,9 @@ function Replies({ selectedChat }) {
   return (
     <div className="messages">
       <div className='messages-container'>
+        <div className={`message`}>
+          Campaign created successfully.
+        </div>
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.body_text.startsWith('Message from') ? 'message-from' : ''}`}>
             {processMessage(message.body_text)}
@@ -139,9 +199,9 @@ function Replies({ selectedChat }) {
 }
 
 function Messages() {
-  const { session } = useSession();
-  const navigate = useNavigate();
-  const [selectedChat, setSelectedChat] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  let id = searchParams.get("id")
+  const [selectedChat, setSelectedChat] = useState(id ? id : null);
 
   return (
     <div>

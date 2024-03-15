@@ -110,6 +110,19 @@ tbody tr:hover{
     text-align: right;    
 }
 
+.unread-container{
+    display: none;
+}
+
+.unread-true{
+    border-radius: 100px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    display: inline-table !important;
+    margin-left: 0.5rem;
+}
+
 /*Desktop*/
 @media (min-width: 1025px) {
 

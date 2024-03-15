@@ -360,21 +360,24 @@ function Signup2() {
                 <input type="email" className="form-control" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>          
                 <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 <div className='row'>
-                  <div className='col-2'>
+                  <div className='col-4'>
                   <select
-                    className='form-control custom-dropdown'
-                    id='country_phone'
-                    value={countryPhone}
-                    onChange={(e) => setCountryPhone(e.target.value)}
-                    required
-                  >
-                    <option value=''>+ 00</option>
-                    {countryCodes.map((code) => (
-                      <option key={code.code} value={ '+' + code.code }>
-                        {code.country} (+{code.code})
-                      </option>
-                    ))}
-                  </select>
+    className='form-control custom-dropdown'
+    id='country_phone'
+    value={countryPhone}
+    onChange={(e) => setCountryPhone(e.target.value)}
+    required
+>
+    <option value={ '+1' }>
+        (+1) United States
+    </option>
+    {countryCodes.map((code) => (
+        code.country !== 'United States' && // Evita di ripetere gli Stati Uniti
+        <option key={code.code} value={ '+' + code.code }>
+            (+{code.code}) {code.country} 
+        </option>
+    ))}
+</select>
                   </div>
                   <div className='col'>
                     <input type='text' className='form-control' id='phone' placeholder='Phone' value={phone} onChange={(e) => setPhone(e.target.value)} required />

@@ -1,11 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState }  from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
 import { useSession } from '../sessionContext';
 
 const Sidebar = () => {
-  const { login, logout } = useSession();
+  const { session, logout } = useSession();
   const navigate = useNavigate();
+
+  const [chats, setChats] = useState([]);
+  const [unreadFlag, setUnreadFlag] = useState(false);
+
+  const checkUnreadMessages = (apiChatData, localChatData) => {
+    if (!localChatData) return;
+  
+    const updatedChatData = apiChatData.map(apiChat => {
+      const localChat = localChatData.find(localChat => localChat.id === apiChat.id);
+      if (!localChat) return apiChat;
+      const apiUpdatedAt = new Date(apiChat.updated_at);
+      const localUpdatedAt = new Date(localChat.updated_at);
+      apiChat.unread = apiUpdatedAt > localUpdatedAt;
+      return apiChat;
+    });
+  
+    if (updatedChatData.some(chat => chat.unread)) {
+      setUnreadFlag(true);
+    }
+  };
+
+  useEffect(() => {
+    const sessionEmail = session ? session.email : null;
+
+    fetch("https://viewster-backend.vercel.app/tickets/getTickets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        email: sessionEmail,
+       }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setChats(data);
+        
+        const localChatData = JSON.parse(localStorage.getItem('chatData'));
+        //console.log(localChatData)
+        checkUnreadMessages(data, localChatData);
+      });
+  }, [session]);
 
   const handleLogout = () => {
     logout();
@@ -38,7 +78,7 @@ const Sidebar = () => {
             <NavLink 
               to="/messages" 
               className={({ isActive }) => isActive ? "active" : undefined}>
-              Messages
+              Messages <span className={`unread-container ${unreadFlag  === true ? 'unread-true' : ''}`}></span>
             </NavLink>
           </div>
 

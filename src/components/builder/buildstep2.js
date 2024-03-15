@@ -65,8 +65,9 @@ function BuildStep2({ data, updateData, step, onNext, currentStep, steps, closeC
     } else if (area === 'US') {
       costPerView = 0.018;
     }
-    return parseFloat(views * costPerView);
-  };
+    const totalCost = parseFloat(views * costPerView);
+    return Math.round(totalCost);
+  };  
 
   const handleChangeBudget = (e) => {
     const newBudget = e.target.value;
