@@ -52,7 +52,7 @@ function CampaignDetails() {
     const dayWord = daysLeft === 1 ? 'day' : 'days';
     const dayWord2 = totalDuration === 1 ? 'day' : 'days';
 
-    setSentenceDaysLeft(daysLeft + ' '  + dayWord + ' left of ' + totalDuration + ' ' + dayWord2);
+    setSentenceDaysLeft(totalDuration + ' ' + dayWord2);
 
     let costPerView;
     if (campaign.Area === 'Global') {
