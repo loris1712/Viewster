@@ -38,7 +38,6 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
   useEffect(() => {
     const budgetInCents = Math.round(parseFloat(budget) * 100);
     //console.log(budgetInCents);
-    if(!paymentIntentIds.includes(paymentIntentId)){
       fetch("http://localhost:3001/payments/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -56,7 +55,6 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
     
         console.log(data.paymentIntentId);
       });
-    }
     
   }, [budget]);
   
