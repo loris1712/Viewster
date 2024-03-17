@@ -113,7 +113,6 @@ export default function CheckoutForm({email, data, paymentIntentId, budget}) {
     }
   };
   
-
   const paymentElementOptions = {
     layout: "tabs"
   }

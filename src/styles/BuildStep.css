@@ -32,6 +32,10 @@ h3{
     margin-top: 1rem !important;
 }
 
+#payment-element{
+    width: 100% !important;
+}
+
 .buildstep p{
     color: #7D8590;
     line-height: 130%;
