@@ -19,15 +19,6 @@
     margin-top: 1rem !important;
 }
 
-.data-panel{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    border-radius: 12px;
-    background-color: #2E2E2E;
-}
-
 .data-panel-title{
     font-size: 16px;
     font-weight: 400;
@@ -99,12 +90,29 @@
 
 /*Desktop*/
 @media (min-width: 1025px) {
-
+    .data-panel{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        border-radius: 12px;
+        background-color: #2E2E2E;
+    }
 }
 
 /*Mobile*/
 @media (max-width: 767px) {
-.button-start-campaign{
-    width: fit-content !important;
-}
+    .button-start-campaign{
+        width: fit-content !important;
+    }
+
+    .data-panel{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        border-radius: 12px;
+        background-color: #2E2E2E;
+        margin-bottom: 1rem
+    }
 }
