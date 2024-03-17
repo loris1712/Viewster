@@ -14,6 +14,7 @@ export const SessionProvider = ({ children }) => {
     setSession({ email });
     // Salva la sessione nel localStorage
     localStorage.setItem('session', JSON.stringify({ email }));
+    localStorage.setItem('chatData', JSON.stringify([]));
   };
 
   const logout = () => {

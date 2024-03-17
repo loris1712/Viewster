@@ -13,13 +13,18 @@ function ChatList({ onSelectChat, selectedChat }) {
   const [filteredTickets, setFilteredTickets] = useState([]);
 
   const saveChatDataToLocalStorage = (data) => {
-    const chatData = data.map(chat => ({ id: chat.id, updated_at: chat.updated_at }));
-    localStorage.setItem('chatData', JSON.stringify(chatData));
+    const storedChatData = JSON.parse(localStorage.getItem('chatData')) || {};
+    
+    data.forEach(chat => {
+      storedChatData[chat.id] = { unread: chat.unread === undefined ? true : chat.unread, updated_at: chat.updated_at };
+    });
+  
+    localStorage.setItem('chatData', JSON.stringify(storedChatData));
   };
 
   useEffect(() => {
     const sessionEmail = session ? session.email : null;
-
+    //https://viewster-backend.vercel.app/tickets/getTickets
     fetch("https://viewster-backend.vercel.app/tickets/getTickets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -29,32 +34,37 @@ function ChatList({ onSelectChat, selectedChat }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setChats(data);
-        //console.log(data)
-        
-        const localChatData = JSON.parse(localStorage.getItem('chatData'));
-        //console.log(localChatData)
-        checkUnreadMessages(data, localChatData);
+        if(data.length> 0){
+          setChats(data);
+          const localChatData = JSON.parse(localStorage.getItem('chatData')) || {};
+          //console.log(localChatData)
+          checkUnreadMessages(data, localChatData);
+        }
       });
   }, [session]);
 
   const checkUnreadMessages = (apiChatData, localChatData) => {
     if (!localChatData) return;
   
-    const updatedChatData = apiChatData.map(apiChat => {
-      const localChat = localChatData.find(localChat => localChat.id === apiChat.id);
-      if (!localChat) return apiChat;
-      const apiUpdatedAt = new Date(apiChat.updated_at);
-      const localUpdatedAt = new Date(localChat.updated_at);
-      apiChat.unread = apiUpdatedAt > localUpdatedAt;
-      return apiChat;
+    const updatedChatData = [];
+  
+    apiChatData.forEach(apiChat => {
+      const localChat = localChatData[apiChat.id];
+      if (!localChat) {
+        apiChat.unread = true;
+        updatedChatData.push(apiChat);
+      } else {
+        const apiUpdatedAt = new Date(apiChat.updated_at);
+        const localUpdatedAt = new Date(localChat.updated_at);
+        apiChat.unread = apiUpdatedAt > localUpdatedAt || localChat.unread;
+        updatedChatData.push(apiChat);
+      }
     });
   
     if (updatedChatData.some(chat => chat.unread)) {
-      //console.log("Ci sono nuovi messaggi non letti");
+      saveChatDataToLocalStorage(updatedChatData);
     }
-
-    //saveChatDataToLocalStorage(updatedChatData);
+  
     setFilteredTickets(updatedChatData);
   };
 
@@ -70,17 +80,15 @@ function ChatList({ onSelectChat, selectedChat }) {
 
   const handleChatClick = (chatId) => {
     const selectedChat = filteredTickets.find(chat => chat.id === chatId);
-    
     selectedChat.unread = false;
   
-    const localChatData = JSON.parse(localStorage.getItem('chatData'));
-    const updatedLocalChatData = localChatData.map(localChat => {
-      if (localChat.id === chatId) {
-        return { ...localChat, updated_at: selectedChat.updated_at, unread: selectedChat.unread};
-      }
-      return localChat;
-    });
-    localStorage.setItem('chatData', JSON.stringify(updatedLocalChatData));
+    const localChatData = JSON.parse(localStorage.getItem('chatData')) || {};
+    
+    if (localChatData[chatId]) {
+      localChatData[chatId].unread = false;
+      localStorage.setItem('chatData', JSON.stringify(localChatData));
+    }
+  
     onSelectChat(chatId);
   };
 

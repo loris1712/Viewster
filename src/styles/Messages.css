@@ -228,7 +228,7 @@ tbody tr:hover{
     }
 
     .messages-container{
-        height: 62vh;
+        height: 50vh;
         overflow-y: scroll;
     }
 

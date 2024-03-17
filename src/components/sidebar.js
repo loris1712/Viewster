@@ -9,17 +9,23 @@ const Sidebar = () => {
 
   const [chats, setChats] = useState([]);
   const [unreadFlag, setUnreadFlag] = useState(false);
-
+  
   const checkUnreadMessages = (apiChatData, localChatData) => {
     if (!localChatData) return;
   
-    const updatedChatData = apiChatData.map(apiChat => {
-      const localChat = localChatData.find(localChat => localChat.id === apiChat.id);
-      if (!localChat) return apiChat;
-      const apiUpdatedAt = new Date(apiChat.updated_at);
-      const localUpdatedAt = new Date(localChat.updated_at);
-      apiChat.unread = apiUpdatedAt > localUpdatedAt;
-      return apiChat;
+    const updatedChatData = [];
+  
+    apiChatData.forEach(apiChat => {
+      const localChat = localChatData[apiChat.id];
+      if (!localChat) {
+        apiChat.unread = true;
+        updatedChatData.push(apiChat);
+      } else {
+        const apiUpdatedAt = new Date(apiChat.updated_at);
+        const localUpdatedAt = new Date(localChat.updated_at);
+        apiChat.unread = apiUpdatedAt > localUpdatedAt || localChat.unread;
+        updatedChatData.push(apiChat);
+      }
     });
   
     if (updatedChatData.some(chat => chat.unread)) {
@@ -39,11 +45,14 @@ const Sidebar = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setChats(data);
+        if(data.length> 0){
+
+          setChats(data);
         
-        const localChatData = JSON.parse(localStorage.getItem('chatData'));
-        //console.log(localChatData)
-        checkUnreadMessages(data, localChatData);
+          const localChatData = JSON.parse(localStorage.getItem('chatData')) || {};
+          //console.log(localChatData)
+          checkUnreadMessages(data, localChatData);
+        }
       });
   }, [session]);
 
