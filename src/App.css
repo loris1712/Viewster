@@ -61,13 +61,6 @@ button:hover {
 }
 
 /* BUTTONS */
-.btn{
-  border-radius: 100px !important;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-}
 
 .btn-primary{
   background: #00C2EC !important;
@@ -115,11 +108,25 @@ button:hover {
   .w--60{
     width: 60% !important;
   }
+
+  .btn{
+    border-radius: 100px !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
 }
 
 /*Mobile*/
 @media (max-width: 767px) {
   .desktop{
     display: none !important;
+  }
+
+  .btn{
+    border-radius: 100px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
   }
 }
