@@ -505,9 +505,9 @@
     }
 
     .title h3{
-        font-size: 34px;
-        font-weight: 700;
-        line-height: 90%;
+        font-size: 34px !important;
+        font-weight: 700 !important;
+        line-height: 90% !important;
         color: #fff;
     }
 

@@ -1,11 +1,36 @@
 // pages/Home.js
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../styles/Header.css';
 import { useSession } from '../sessionContext';
 
 function Header() {
   const { session } = useSession();
   const emailSession = session ? session.email : null;
+
+  useEffect(() => {
+    // Trova tutti i link nella barra di navigazione
+    const navLinks = document.querySelectorAll('.nav-link2');
+
+    // Per ogni link trovato, aggiungi un gestore di eventi per il click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Chiudi il menu espandibile
+        console.log("Ciao");
+        const navbarCollapse = document.querySelector('.navbar-collapse-mobile');
+        navbarCollapse.classList.remove('show');
+      });
+    });
+
+    // Pulizia: rimuovi i gestori di eventi quando il componente viene smontato
+    return () => {
+      navLinks.forEach(link => {
+        link.removeEventListener('click', () => {
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          navbarCollapse.classList.remove('show');
+        });
+      });
+    };
+  }, []);
 
   return (
     <div className='header'>
@@ -77,7 +102,7 @@ function Header() {
                 </svg>
               </span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="collapse navbar-collapse navbar-collapse-mobile" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                     <a className="nav-link nav-link2 active" aria-current="page" href="/#services">Services <p className="nav-link-span">&lt;</p></a>

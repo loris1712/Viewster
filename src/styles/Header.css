@@ -20,11 +20,6 @@
     font-weight: 400;
 }
 
-.nav-link:focus, .nav-link:hover {
-    color: #fff !important;
-    opacity: 0.7 !important;
-}
-
 .btn-login{
     margin-right: 1rem;
 }
@@ -34,6 +29,11 @@
     .navbar{
         margin-left: 4rem;
         margin-right: 4rem;
+    }
+
+    .nav-link:focus, .nav-link:hover {
+        color: #fff !important;
+        opacity: 0.7 !important;
     }
 }
 

@@ -104,6 +104,11 @@
 
 /*Mobile*/
 @media (max-width: 767px) {
+
+    .footer-category-title{
+        margin-top: 1.5rem;
+    }
+
     .footer-first-section {
         padding-left: 2rem;
         padding-right: 2rem;

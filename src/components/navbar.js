@@ -108,6 +108,11 @@ const Navbar = () => {
                       Messages <p className="nav-link-span">&lt;</p>
                     </NavLink>
                 </li>
+                <li className="nav-item">
+                  <div className='nav-link nav-link2' onClick={handleLogout}>
+                          Logout <p className="nav-link-span">&lt;</p>
+                    </div>
+                </li>
                 {/*<li className="nav-item">
                     <NavLink to="/invoices" activeClassName="active" className="nav-link nav-link2">
                       Invoices <p className="nav-link-span">&lt;</p>
