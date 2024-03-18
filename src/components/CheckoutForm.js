@@ -126,7 +126,11 @@ export default function CheckoutForm({email, data, paymentIntentId, budget}) {
             onChange={(e) => setEmail2(e.target.value)}
             className="form-control input-field-text"
             placeholder="Enter email address"
-      />
+        />
+
+        <div>
+          <h3 className="div-total-amount">Total Amount: <span className="total-amount">${budget}</span></h3>
+        </div>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button className="btn btn-primary button-next-builder" style={{marginTop: '1.5rem', marginBottom: "1.5rem"}} disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">

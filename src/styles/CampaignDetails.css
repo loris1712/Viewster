@@ -98,10 +98,23 @@
         border-radius: 12px;
         background-color: #2E2E2E;
     }
+
+    .campaign-link{
+        padding-bottom: 2rem
+    }
 }
 
 /*Mobile*/
 @media (max-width: 767px) {
+
+    .campaign-information{
+        margin-bottom: 2rem !important;
+    }
+    
+    .campaign-link{
+        padding-bottom: 2rem
+    }
+
     .button-start-campaign{
         width: fit-content !important;
     }

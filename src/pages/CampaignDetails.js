@@ -221,7 +221,7 @@ function CampaignDetails() {
                 }
 
                 <h3>YouTube Video Link</h3>
-                <a href={campaign.VideoLink}>{campaign.VideoLink}</a>
+                <a href={campaign.VideoLink} className="campaign-link">{campaign.VideoLink}</a>
               </div>
             </div>
           </div>

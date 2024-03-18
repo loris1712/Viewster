@@ -10,6 +10,14 @@ h3{
     font-weight: 700 !important;
 }
 
+.div-total-amount{
+    margin-bottom: 2rem;
+}
+
+.total-amount{
+    font-weight: 400;
+}
+
 .step-container h3{
     color: #fff !important;
     font-size: 16px !important;
