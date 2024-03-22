@@ -109,6 +109,11 @@ p{
   .input-field-time {
     padding-right: 30px;
   }
+
+  .input-field-time::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }  
   
 
 .w-70{
@@ -153,6 +158,7 @@ p{
 
 .laststep-container p{
     line-height: 130% !important;
+    color: #a7a7a7;
 }
 
 .options .checkbox-label{
@@ -164,6 +170,32 @@ p{
 .options .checkbox-label input{
     margin-right: 0.5rem;
     cursor: pointer;
+}
+
+.paynow-notes{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.paynow-notes p{
+    color: #b3b3b3;
+    line-height: 20px;
+    font-size: 12px;
+    margin-bottom: 0.5rem !important;
+}
+
+.buttons-control-checkout{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem
+}
+
+.buttons-control-checkout .button-next-builder{
+    margin-left: 0 !important;
+}
+
+.buttons-control-checkout .button-back-step-3{
+    margin-left: auto;
 }
 
 /*Desktop*/

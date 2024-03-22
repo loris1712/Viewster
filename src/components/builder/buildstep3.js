@@ -76,17 +76,10 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
 
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm data={data} budget={data.budget} email={email} paymentIntentId={paymentIntentIds[0]} />
+          <CheckoutForm data={data} budget={data.budget} email={email} paymentIntentId={paymentIntentIds[0]} onClick={prevStep} />
         </Elements>
       )}
 
-        <div className='builder-controls'>
-              {currentStep === 0 ? (
-                <button className="button-back-builder" type="submit" onClick={closeCampaignBuilder}>Back</button>
-              ) : (
-                <button className="button-back-builder" onClick={prevStep}>Back</button>
-              )}
-              </div>
     </div>
   );
 }

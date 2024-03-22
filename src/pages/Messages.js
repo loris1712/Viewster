@@ -186,7 +186,7 @@ function Replies({ selectedChat }) {
     <div className="messages">
       <div className='messages-container'>
         <div className={`message`}>
-          Campaign created successfully.
+          Your order has been processed. Our team will review the ad and begin the campaign within 2 business days. You will receive a notification when the campaign has started and reports will be updated daily on Views and Budgets in "All Campaigns".
         </div>
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.body_text.startsWith('Message from') ? 'message-from' : ''}`}>

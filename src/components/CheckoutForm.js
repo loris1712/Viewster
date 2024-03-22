@@ -8,7 +8,7 @@ import '../styles/BuildStep.css';
 import { useSession } from '../sessionContext';
 import { useNavigate } from 'react-router-dom';
 
-export default function CheckoutForm({email, data, paymentIntentId, budget}) {
+export default function CheckoutForm({email, data, paymentIntentId, budget, onClick}) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -132,12 +132,20 @@ export default function CheckoutForm({email, data, paymentIntentId, budget}) {
           <h3 className="div-total-amount">Total Amount: <span className="total-amount">${budget}</span></h3>
         </div>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button className="btn btn-primary button-next-builder" style={{marginTop: '1.5rem', marginBottom: "1.5rem"}} disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? "Loading" : "Pay now"}
-        </span>
-      </button>
-      {/* Show any error or success messages */}
+      <div className="paynow-notes">
+        <p>* When you click "Pay Now", we will pre-authorize your card for the payment. </p>
+        <p>* Once the campaign is set up and approved by Google/YouTube, we will charge your card.</p>
+        <p>* Rest assured, if the campaign is stopped for any reason or cannot be served, you will only be billed for the delivered views and the remaining amount will be refunded to you.</p>
+      </div>
+      
+      <div className="buttons-control-checkout">
+        <button className="btn btn-primary button-next-builder" disabled={isLoading || !stripe || !elements} id="submit">
+          <span id="button-text">
+            {isLoading ? "Loading" : "Pay now"}
+          </span>
+        </button>
+        <button className="button-back-builder button-back-step-3" onClick={onClick}>Back</button>
+      </div>
       {message && <div id="payment-message">{message}</div>}
     </form>
   );

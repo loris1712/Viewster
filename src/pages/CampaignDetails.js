@@ -4,26 +4,26 @@ import Sidebar from '../components/sidebar';
 import Navbar from '../components/navbar';
 import '../styles/CampaignDetails.css';
 import { useSession } from '../sessionContext';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import YouTubeEmbed from '../components/YouTubeEmbed';
 
 function CampaignDetails() {
   const { session } = useSession();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const location = useLocation();
   const { campaignId } = location.state || {};
   const [campaign, setCampaign] = useState([]);
   const [sentenceDaysLeft, setSentenceDaysLeft] = useState('');
   const [calculatedSpentBudget, setCalculatedSpentBudget] = useState('');
+  let id = searchParams.get("id")
 
   const calculateProgress = (BudgetSpent, Budget) => {
     if (Budget === 0) {
-      // Handle the case where the total budget is 0 to avoid division by zero
       return 0;
     }
   
-    // Calculate the percentage of the budget spent
     return (BudgetSpent / Budget) * 100;
   };
   
@@ -33,7 +33,7 @@ function CampaignDetails() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
-        campaign_id: campaignId,
+        campaign_id: campaignId ? campaignId : id,
        }),
     })
       .then((res) => res.json())

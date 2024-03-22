@@ -94,7 +94,7 @@ function Dashboard2() {
   <tbody>
     {filteredCampaigns.length > 0 ? (
       filteredCampaigns.map((campaign, index) => (
-        <tr key={index}>
+        <tr key={index} className='campaign-row' onClick={() => handleCampaignDetail(campaign.Campaign_id)}>
           <th scope="row">{campaign.Title}</th>
           <td>{campaign.Type}</td>
           <td className='desktop'>
@@ -128,7 +128,7 @@ function Dashboard2() {
             </div>
           </td>
           <td className='row-last'>
-            <div className='navbar-icon btn-campaign-detail' onClick={() => handleCampaignDetail(campaign.Campaign_id)}>
+            <div className='navbar-icon btn-campaign-detail'>
               <svg xmlns="http://www.w3.org/2000/svg" height="18px" fill="#fff" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
             </div>
           </td>
