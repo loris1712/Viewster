@@ -5,6 +5,7 @@ import Navbar from '../components/navbar';
 import '../styles/Dashboard.css';
 import { useSession } from '../sessionContext';
 import { useNavigate } from 'react-router-dom';
+import AuthGuard from './api/authGuard';
 
 function Dashboard2() {
   const [email, setEmail] = useState("");
@@ -74,6 +75,7 @@ function Dashboard2() {
 
   return (
     <div>
+      <AuthGuard>
       <Navbar />
       <Sidebar />
         <div className='dashboard-component'>
@@ -144,6 +146,7 @@ function Dashboard2() {
 
           </div>
         </div>
+        </AuthGuard>
     </div>
   );
 }

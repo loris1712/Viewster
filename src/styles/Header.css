@@ -69,6 +69,7 @@
         font-weight: 600 !important;
         display: flex !important;
         align-items: center;
+        cursor: pointer;
     }
 
     .nav-link2 .nav-link-span{

@@ -5,6 +5,7 @@ import Navbar from '../components/navbar';
 import '../styles/Messages.css';
 import { useSession } from '../sessionContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import AuthGuard from './api/authGuard';
 
 function ChatList({ onSelectChat, selectedChat }) {
   const [chats, setChats] = useState([]);
@@ -220,6 +221,7 @@ function Messages() {
 
   return (
     <div>
+      <AuthGuard>
       <Navbar />
       <Sidebar />
         <div className='dashboard-component'>
@@ -232,6 +234,7 @@ function Messages() {
             </div>
         </div>
         </div>
+        </AuthGuard>
     </div>
   );
 }

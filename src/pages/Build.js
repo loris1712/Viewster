@@ -11,6 +11,7 @@ import BuildStep1 from '../components/builder/buildstep1';
 import BuildStep2 from '../components/builder/buildstep2';
 import BuildStep3 from '../components/builder/buildstep3';
 import BuildStep4 from '../components/builder/buildstep4';
+import AuthGuard from './api/authGuard';
 
 const steps = [
   'Setup a new campaign',
@@ -76,6 +77,8 @@ function Build() {
 
   return (
     <div>
+      
+      <AuthGuard>
       <Navbar />
       <Sidebar />
         <div className='dashboard-component'>
@@ -98,6 +101,7 @@ function Build() {
           )}
           
         </div>
+        </AuthGuard>
     </div>
   );
 }

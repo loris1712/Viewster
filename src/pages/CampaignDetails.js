@@ -6,6 +6,7 @@ import '../styles/CampaignDetails.css';
 import { useSession } from '../sessionContext';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import YouTubeEmbed from '../components/YouTubeEmbed';
+import AuthGuard from './api/authGuard';
 
 function CampaignDetails() {
   const { session } = useSession();
@@ -72,6 +73,7 @@ function CampaignDetails() {
 
   return (
     <div>
+      <AuthGuard>
       <Navbar />
       <Sidebar />
         <div className='dashboard-component'>
@@ -202,17 +204,26 @@ function CampaignDetails() {
                   </div>
                 </div>
 
-                <div className='row align-items-start campaign-information'>
-                  <h3>The video has</h3>
-                  <div className='row align-items-start campaign-attributes'>
-                  {campaign.SelectedOptions && Array.isArray(JSON.parse(campaign.SelectedOptions)) && JSON.parse(campaign.SelectedOptions).map((attribute, index) => (
-                    <div className='campaign-attribute' key={index}>
-                      <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" fill="#00C2EC" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                      <div className='attribute-name'>{attribute}</div>
+                {campaign.SelectedOptions && campaign.SelectedOptions.trim().length > 2 && campaign.SelectedOptions.trim() !== "" && (
+                  <div className='row align-items-start campaign-information'>
+                    <h3>The video hasssss</h3>
+                    <div className='row align-items-start campaign-attributes'>
+                      {Array.isArray(JSON.parse(campaign.SelectedOptions)) &&
+                        JSON.parse(campaign.SelectedOptions).map((attribute, index) => (
+                          <div className='campaign-attribute' key={index}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" fill="#00C2EC" viewBox="0 0 448 512">
+                              <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                            </svg>
+                            <div className='attribute-name'>{attribute}</div>
+                          </div>
+                        ))}
                     </div>
-                  ))}
                   </div>
-                </div>
+                )}
+
+{/*{campaign.SelectedOptions && console.log('Trimmed SelectedOptions:', campaign.SelectedOptions.trim().length)}*/}
+
+
               </div>
               <div className='col'>
                 <h3>YouTube Video</h3>
@@ -226,6 +237,7 @@ function CampaignDetails() {
             </div>
           </div>
         </div>
+        </AuthGuard>
     </div>
   );
 }

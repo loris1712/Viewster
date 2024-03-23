@@ -6,6 +6,7 @@ import '../styles/CampaignDetails.css';
 import { useSession } from '../sessionContext';
 import { useLocation } from 'react-router-dom';
 import BuildStep4 from '../components/builder/buildstep4';
+import AuthGuard from './api/authGuard';
 
 function ConfirmedPayment() {
   const { session } = useSession();
@@ -16,11 +17,13 @@ function ConfirmedPayment() {
 
   return (
     <div>
+      <AuthGuard>
       <Navbar />
       <Sidebar />
         <div className='dashboard-component'>
           <BuildStep4 step="Thank you for submitting!" />
         </div>
+        </AuthGuard>
     </div>
   );
 }
