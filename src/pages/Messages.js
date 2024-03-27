@@ -191,7 +191,7 @@ function Replies({ selectedChat }) {
         </div>
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.body_text.startsWith('Message from') ? 'message-from' : ''}`}>
-            {processMessage(message.body_text)}
+            <div dangerouslySetInnerHTML={{ __html: processMessage(message.body) }}></div>
 
             <p className='message-time'>{formatCreatedAt(message.created_at)}</p>
           </div>
