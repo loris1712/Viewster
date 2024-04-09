@@ -59,7 +59,7 @@ function Signup2() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if (!isEmailValid(email) || !firstname || !lastname || !phone || !countryPhone || !termsChecked) {
+    if (!isEmailValid(email) || !firstname || !lastname || !phone || !termsChecked) {
       
       alert('Fill in all required fields with valid values.');
       return;

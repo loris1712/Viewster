@@ -10,6 +10,8 @@ import AuthGuard from './api/authGuard';
 
 function CampaignDetails() {
   const { session } = useSession();
+  const email = session ? session.email : null;
+
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -18,7 +20,7 @@ function CampaignDetails() {
   const [campaign, setCampaign] = useState([]);
   const [sentenceDaysLeft, setSentenceDaysLeft] = useState('');
   const [calculatedSpentBudget, setCalculatedSpentBudget] = useState('');
-  let id = searchParams.get("id")
+  let id = searchParams.get("id");
 
   const calculateProgress = (BudgetSpent, Budget) => {
     if (Budget === 0) {
@@ -27,7 +29,6 @@ function CampaignDetails() {
   
     return (BudgetSpent / Budget) * 100;
   };
-  
 
   useEffect(() => {
     fetch("https://viewster-backend.vercel.app/campaigns/getCampaign", {
@@ -61,9 +62,14 @@ function CampaignDetails() {
     } else if (campaign.Area === 'US') {
       costPerView = 0.018;
     }
+
     let currentViews = parseFloat(campaign.CurrentTotalViews * costPerView).toLocaleString('en-US');
     setCalculatedSpentBudget(currentViews);
     //console.log(calculatedSpentBudget)
+
+    if(email !== campaign.email){
+      navigate('/dashboard');
+    }
 
   }, [campaign]);
 
