@@ -67,11 +67,17 @@ function CampaignDetails() {
     setCalculatedSpentBudget(currentViews);
     //console.log(calculatedSpentBudget)
 
-    if(email !== campaign.email){
-      navigate('/dashboard');
-    }
-
   }, [campaign]);
+
+  useEffect(() => {
+    
+    if(campaign?.email){
+      if(email !== campaign?.email){
+        navigate('/dashboard');
+      }
+    }
+    
+  }, [campaign?.email]);
 
   const handleMessages = (ticketId) => {
     navigate('/messages?id='+ticketId);
