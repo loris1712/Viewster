@@ -36,7 +36,7 @@ function Home() {
                   <h4>Introducing Viewster</h4>
                 </div>
                 <div className='title'>
-                  <h1>Take your <span>views</span></h1>
+                  <h1>Take your <span><br></br> YouTube views</span></h1>
                   <h1>to the next <span>level</span></h1>
                 </div>
                 <div className='description'>
@@ -61,7 +61,7 @@ function Home() {
                   <h3>Our <span>Services</span></h3>
                 </div>
                 <div className='description w--30'>
-                  Viewster is an artist-first platform that allows you to promote your music, maximize views and build your community.
+                  Viewster is an artist-first platform that allows you to promote your music, maximize views and build your community on YouTube.
                 </div>
                 <div className='display-flex'>
                   <div className='service-card transition'>
