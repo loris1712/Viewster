@@ -6,7 +6,7 @@ import { useSession } from '../../sessionContext';
 import CheckoutForm from "../CheckoutForm";
 
 const stripePromise = loadStripe('pk_live_51OZ4XcJT0IkqABPGOksLIGBT7STL4BN0kkkOeTrUZQKITJhOCbPx1dh9YZbpYuXY3db2pGY2Xi3LNVHI7qmZStjl00VKtlTjvQ');
-//const stripePromise = loadStripe('pk_test_51OZ4XcJT0IkqABPGLxGzuEBlmLp2dN67p5DfkznguEdEBIrGvT8ZoXZT3Aj8UAFoWi6JcKanAecV2C3ljtdrjX7K005TmCS6jj')
+const stripePromiseTest = loadStripe('pk_test_51OZ4XcJT0IkqABPGLxGzuEBlmLp2dN67p5DfkznguEdEBIrGvT8ZoXZT3Aj8UAFoWi6JcKanAecV2C3ljtdrjX7K005TmCS6jj')
 
 function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeCampaignBuilder, prevStep, nextStep }) {
   const [title, setTitle] = useState(data.title || '');
@@ -36,14 +36,15 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
   };
 
   useEffect(() => {
+
     const budgetInCents = Math.round(parseFloat(budget) * 100);
-    //console.log(budgetInCents);
-      fetch("https://viewster-backend.vercel.app/payments/create-payment-intent", {
+      //console.log(budgetInCents);
+      fetch("http://localhost:3001/payments/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           amount: budgetInCents,
-          //receiptEmail: email,
+          receiptEmail: email,
           description: 'Created Campaign'
         }),
       })
@@ -52,8 +53,6 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
         setClientSecret(data.clientSecret);
         setPaymentIntentId(data.paymentIntentId);
         setPaymentIntentIds(prevIds => [...prevIds, data.paymentIntentId]);
-    
-        console.log(data.paymentIntentId);
       });
     
   }, [budget]); 
@@ -75,10 +74,19 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
       <h2>{step}</h2>
 
       {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm data={data} budget={data.budget} email={email} paymentIntentId={paymentIntentIds[0]} onClick={prevStep} />
+        <Elements 
+            options={options} 
+            stripe={email === 'marketing@aestheticagency.co' ? stripePromiseTest : stripePromise}
+        >
+            <CheckoutForm 
+                data={data} 
+                budget={data.budget} 
+                email={email} 
+                paymentIntentId={paymentIntentIds[0]} 
+                onClick={prevStep} 
+            />
         </Elements>
-      )}
+    )}
 
     </div>
   );
