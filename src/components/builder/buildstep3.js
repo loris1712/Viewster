@@ -39,7 +39,7 @@ function BuildStep4({ data, updateData, step, onNext, currentStep, steps, closeC
 
     const budgetInCents = Math.round(parseFloat(budget) * 100);
       //console.log(budgetInCents);
-      fetch("http://localhost:3001/payments/create-payment-intent", {
+      fetch("https://viewster-backend.vercel.app/payments/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
